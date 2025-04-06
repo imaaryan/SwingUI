@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwingUI Navbar</title>
+    <link
+      rel="stylesheet"
+      href="../../Components//SwingKit/Gradients/style.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="dark">
+    <nav class="navbar px-6 py-4 flex items-center justify-between">
+      <div class="logo">
+        <img src="../../assets/gradient-logo.png" alt="Logo" />
+      </div>
+      <div class="flex items-center">
+        <!-- Desktop Menu -->
+        <div class="desktop-menu flex items-center">
+          <div class="flex space-x-8">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link">About</a>
+            <div class="dropdown">
+              <a href="#" class="nav-link flex items-center">
+                Services
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 ml-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </a>
+              <div class="dropdown-content mt-2 py-2">
+                <a href="#" class="dropdown-item block px-4 py-2">Service 1</a>
+                <a href="#" class="dropdown-item block px-4 py-2">Service 2</a>
+                <a href="#" class="dropdown-item block px-4 py-2">Service 3</a>
+              </div>
+            </div>
+            <a href="#" class="nav-link">Blogs</a>
+            <a href="#" class="nav-link">Contact</a>
+          </div>
+          <div class="divider px-4"></div>
+          <div class="flex items-center space-x-4 pl-4">
+            <button
+              id="desktop-theme-toggle"
+              class="theme-toggle px-3 py-2 rounded-md focus:outline-none"
+            >
+              <i class="ri-sun-fill"></i>
+            </button>
+            <a
+              href="#"
+              class="swing-ocean-gradient hover:swing-ocean-gradient px-6 py-2 rounded-md text-white"
+              >Get Started</a
+            >
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="flex items-center space-x-4">
+          <button
+            id="mobile-theme-toggle"
+            class="theme-toggle px-3 py-2 rounded-md focus:outline-none md:hidden"
+          >
+            <i class="ri-sun-fill"></i>
+          </button>
+          <button
+            id="hamburger-btn"
+            class="hamburger-btn swing-ocean-gradient hover:swing-ocean-gradient"
+          >
+            <i class="ri-menu-line px-1 py-2 text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <div class="mobile-menu-content">
+        <div class="mobile-menu-header">
+          <button id="close-menu-btn" class="focus:outline-none">
+            <i class="ri-close-line text-2xl"></i>
+          </button>
+        </div>
+        <a href="#" class="mobile-nav-link">Home</a>
+        <a href="#" class="mobile-nav-link">About</a>
+        <div class="mobile-dropdown">
+          <a
+            href="#"
+            class="mobile-nav-link flex items-center justify-between"
+            id="mobile-services-dropdown"
+          >
+            Services
+            <i class="ri-arrow-down-s-line"></i>
+          </a>
+          <div
+            class="flex flex-col mobile-dropdown-content"
+            id="mobile-services-content"
+          >
+            <a href="#" class="mobile-nav-link">Service 1</a>
+            <a href="#" class="mobile-nav-link">Service 2</a>
+            <a href="#" class="mobile-nav-link">Service 3</a>
+          </div>
+        </div>
+        <a href="#" class="mobile-nav-link">Blogs</a>
+        <a href="#" class="mobile-nav-link">Contact</a>
+        <div class="mt-auto">
+          <a
+            href="#"
+            class="swing-ocean-gradient hover:swing-ocean-gradient px-6 py-2 rounded-md text-white block text-center mt-6"
+            >Get Started</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

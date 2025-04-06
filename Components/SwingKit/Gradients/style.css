@@ -1,0 +1,43 @@
+/* gradients bg */
+.swing-ocean-gradient {
+  background: linear-gradient(130deg, #3badb2 0%, #004aad 100%);
+}
+.hover\:swing-ocean-gradient:hover {
+  background: linear-gradient(130deg, #3badb2 0%, #004aad 80%);
+  transition: color 0.5s;
+}
+.swing-fire-gradient {
+  background: linear-gradient(130deg, #f5af19 0%, #f12711 100%);
+}
+.hover\:swing-fire-gradient:hover {
+  background: linear-gradient(130deg, #f5af19 0%, #f12711 80%);
+  transition: color 0.5s;
+}
+.swing-peach-gradient {
+  background: linear-gradient(130deg, #ffc371 0%, #ff5f6d 100%);
+}
+.hover\:swing-peach-gradient:hover {
+  background: linear-gradient(130deg, #ffc371 0%, #ff5f6d 80%);
+  transition: color 0.5s;
+}
+.swing-love-gradient {
+  background: linear-gradient(262deg, #ef473a 0%, #cb2d3e 100%);
+}
+.hover\:swing-love-gradient:hover {
+  background: linear-gradient(262deg, #ef473a 0%, #cb2d3e 80%);
+  transition: color 0.5s;
+}
+.swing-deepsea-gradient {
+  background: linear-gradient(61deg, #000428 0%, #004e92 100%);
+}
+.hover\:swing-deepsea-gradient:hover {
+  background: linear-gradient(61deg, #000428 0%, #004e92 80%);
+  transition: color 0.5s;
+}
+.swing-royal-gradient {
+  background: linear-gradient(323deg, #734b6d 0%, #42275a 100%);
+}
+.hover\:swing-royal-gradient:hover {
+  background: linear-gradient(323deg, #734b6d 0%, #42275a 80%);
+  transition: color 0.5s;
+}

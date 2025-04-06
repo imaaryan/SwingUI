@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="dark">
+    <button class="theme-toggle" id="theme-toggle">
+      <i class="ri-sun-fill text-2xl"></i>
+    </button>
+
+    <div class="hamburger-menu" id="hamburger-menu">
+      <i class="ri-menu-line text-2xl"></i>
+    </div>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Getting Started</div>
+        <div class="sidebar-links  pl-3">
+          <a href="#" class="active">Introduction</a>
+          <a href="#">Installation</a>
+          <a href="#">Quick Start</a>
+          <a href="#">Configuration</a>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-title">Core Concepts</div>
+        <div class="sidebar-links pl-3">
+          <a href="#">Components</a>
+          <a href="#">Data Management</a>
+          <a href="#">State</a>
+          <a href="#">Routing</a>
+          <a href="#">Testing</a>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-title">Advanced</div>
+        <div class="sidebar-links pl-3">
+          <a href="#">Performance Optimization</a>
+          <a href="#">Server-Side Rendering</a>
+          <a href="#">Security</a>
+          <a href="#">Plugins</a>
+          <a href="#">Deployment</a>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-title">API Reference</div>
+        <div class="sidebar-links pl-3">
+          <a href="#">Core API</a>
+          <a href="#">Plugin API</a>
+          <a href="#">Configuration API</a>
+          <a href="#">Command Line Interface</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <div class="mobile-menu-content">
+        <div class="mobile-menu-header">
+          <button id="close-menu-btn" class="focus:outline-none">
+            <i class="ri-close-line text-2xl"></i>
+          </button>
+        </div>
+        <a href="#" class="mobile-nav-link active">Introduction</a>
+        <a href="#" class="mobile-nav-link">Installation</a>
+        <a href="#" class="mobile-nav-link">Quick Start</a>
+        <a href="#" class="mobile-nav-link">Configuration</a>
+        <a href="#" class="mobile-nav-link">Components</a>
+        <a href="#" class="mobile-nav-link">Data Management</a>
+        <a href="#" class="mobile-nav-link">Routing</a>
+        <a href="#" class="mobile-nav-link">Testing</a>
+        <a href="#" class="mobile-nav-link">Core API</a>
+        <a href="#" class="mobile-nav-link">Plugin API</a>
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay"></div>
+
+    <main class="content-wrapper">
+      <div class="content">
+        <h1>Introduction</h1>
+
+        <p>
+          Welcome to our framework documentation. This guide will help you
+          understand the core concepts and get started with building
+          applications quickly and efficiently.
+        </p>
+
+        <p>
+          At the very basic level, our framework provides a simple, intuitive
+          API while offering powerful features that support complex application
+          development. Our focus is on developer experience without sacrificing
+          performance.
+        </p>
+
+        <h2>Core Features</h2>
+
+        <p>
+          Our framework is designed to simplify the development process while
+          providing all the tools needed for modern web applications. Here are
+          some of the core features that set it apart:
+        </p>
+
+        <ol>
+          <li>
+            <strong>Component-Based Architecture</strong> that promotes
+            reusability and maintainability while keeping your codebase
+            organized and easy to understand.
+          </li>
+          <li>
+            <strong>Virtual DOM</strong> implementation that optimizes rendering
+            performance by minimizing actual DOM operations.
+          </li>
+          <li>
+            <strong>State Management</strong> built-in with simple yet powerful
+            APIs for managing application state across components.
+          </li>
+        </ol>
+
+        <h2>Getting Started with Components</h2>
+
+        <p>
+          Components are the building blocks of our framework. A component
+          defines a piece of the UI and how it behaves. Here's a simple
+          component example:
+        </p>
+
+        <div class="code-block">
+          <div class="language-indicator">js</div>
+          <pre><span class="keyword">import</span> { Component } <span class="keyword">from</span> <span class="string">'framework'</span>;
+
+<span class="keyword">class</span> <span class="function">Counter</span> <span class="keyword">extends</span> Component {
+  constructor(props) {
+    <span class="keyword">super</span>(props);
+    <span class="keyword">this</span>.state = { count: 0 };
+  }
+
+  increment = () => {
+    <span class="keyword">this</span>.setState({ count: <span class="keyword">this</span>.state.count + 1 });
+  }
+
+  render() {
+    <span class="keyword">return</span> (
+      &lt;div&gt;
+        &lt;p&gt;Current count: {<span class="keyword">this</span>.state.count}&lt;/p&gt;
+        &lt;button onClick={<span class="keyword">this</span>.increment}&gt;Increment&lt;/button&gt;
+      &lt;/div&gt;
+    );
+  }
+}</pre>
+        </div>
+
+        <h2>Hot Module Replacement</h2>
+
+        <p>
+          Our framework provides Hot Module Replacement out of the box, allowing
+          you to see your changes instantly without losing component state. This
+          dramatically improves the development experience.
+        </p>
+
+        <p>
+          When you make changes to your components, the framework will
+          automatically update your application without requiring a full reload,
+          preserving the state of your components.
+        </p>
+
+        <h2>Dependency Management</h2>
+
+        <p>
+          The framework includes a powerful dependency management system that
+          resolves and optimizes dependencies automatically. This ensures your
+          application only loads what it needs, improving performance and
+          reducing bundle size.
+        </p>
+
+        <div class="code-block">
+          <div class="language-indicator">js</div>
+          <pre><span class="keyword">import</span> { useState } <span class="keyword">from</span> <span class="string">'framework'</span>;
+<span class="keyword">import</span> { fetchData } <span class="keyword">from</span> <span class="string">'./api'</span>;
+
+<span class="keyword">function</span> <span class="function">DataComponent</span>() {
+  <span class="keyword">const</span> [data, setData] = useState(null);
+  <span class="keyword">const</span> [loading, setLoading] = useState(false);
+
+  <span class="keyword">async function</span> <span class="function">loadData</span>() {
+    setLoading(true);
+    <span class="keyword">const</span> result = <span class="keyword">await</span> fetchData();
+    setData(result);
+    setLoading(false);
+  }
+
+  <span class="keyword">return</span> (
+    &lt;div&gt;
+      {loading ? &lt;p&gt;Loading...&lt;/p&gt; : data && &lt;p&gt;{data.summary}&lt;/p&gt;}
+      &lt;button onClick={loadData}&gt;Load Data&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

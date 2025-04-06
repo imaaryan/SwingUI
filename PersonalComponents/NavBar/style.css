@@ -1,0 +1,266 @@
+
+.dark {
+  background-color: var(--dark-bg);
+  color: var(--color-text-light);
+}
+
+.dark .navbar {
+  background-color: var(--dark-navbar-bg);
+}
+
+.light {
+  background-color: var(--light-bg);
+  color: var(--color-text);
+}
+
+.light .navbar {
+  background-color: var(--light-navbar-bg);
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+.navbar {
+  transition: background-color 0.3s;
+}
+
+.logo img {
+  width: 125px;
+  height: auto;
+}
+
+/* Nav link styling */
+.nav-link {
+  transition: color 0.3s;
+}
+
+.dark .nav-link {
+  color: var(--dark-nav-default);
+}
+
+.dark .nav-link:hover {
+  color: var(--dark-nav-hover);
+}
+
+.light .nav-link {
+  color: var(--light-nav-default);
+}
+
+.light .nav-link:hover {
+  color: var(--light-nav-hover);
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  box-shadow: var(--shadow-default);
+  z-index: 1;
+  border-radius: 8px;
+  padding: 10px;
+  padding-top: 15px;
+  margin-top: 10;
+  top: 15px;
+  left: -10px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.divider {
+  height: 20px;
+  content: "";
+  border-right: 1px solid var(--light-bg);
+  opacity: 10%;
+}
+
+/* Theme toggle styling */
+.theme-toggle {
+  transition: color 0.3s;
+}
+
+.dark .theme-toggle {
+  color: var(--dark-nav-default);
+}
+
+.dark .theme-toggle:hover {
+  color: var(--dark-toggle-hover);
+  background-color: var(--dark-bg);
+}
+
+.light .theme-toggle {
+  color: var(--light-nav-default);
+}
+
+.light .theme-toggle:hover {
+  background-color: var(--light-bg);
+  color: var(--dark-bg);
+}
+
+.dark .dropdown-content {
+  background-color: var(--dark-dropdown-bg);
+}
+
+.light .dropdown-content {
+  background-color: var(--light-dropdown-bg);
+}
+
+.dark .dropdown-item:hover {
+  background-color: var(--dark-hover-bg);
+}
+
+.light .dropdown-item:hover {
+  background-color: var(--light-hover-bg);
+}
+
+/* Dropdown item styling */
+.dropdown-item {
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.dark .dropdown-item {
+  border-radius: 5px;
+  color: var(--dark-nav-default);
+}
+
+.dark .dropdown-item:hover {
+  color: var(--dark-nav-hover);
+}
+
+.light .dropdown-item {
+  border-radius: 5px;
+  color: var(--light-nav-default);
+}
+
+.light .dropdown-item:hover {
+  color: var(--light-nav-hover);
+}
+
+/* Mobile menu styling */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100vh;
+  overflow-x: hidden;
+  transition: width 0.3s ease;
+  z-index: 100;
+}
+
+.dark .mobile-menu {
+  background-color: var(--dark-navbar-bg);
+}
+
+.light .mobile-menu {
+  background-color: var(--light-navbar-bg);
+}
+
+.mobile-menu.active {
+  width: 250px;
+}
+
+.mobile-menu-content {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  height: 100%;
+}
+
+.mobile-menu-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+}
+
+.mobile-nav-link {
+  padding: 12px 10px;
+  gap: 10px;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.dark .mobile-nav-link {
+  color: var(--dark-nav-default);
+}
+
+.dark .mobile-nav-link:hover {
+  color: var(--dark-nav-hover);
+}
+
+.light .mobile-nav-link {
+  color: var(--light-nav-default);
+}
+
+.light .mobile-nav-link:hover {
+  color: var(--light-nav-hover);
+}
+
+.dark .ri-close-line {
+  color: var(--dark-nav-default);
+}
+
+.light .ri-close-line {
+  color: var(--light-nav-default);
+}
+
+.mobile-dropdown {
+  overflow: hidden;
+}
+
+.mobile-dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding-left: 15px;
+}
+
+.mobile-dropdown-content.active {
+  max-height: 150px;
+}
+
+.hamburger-btn {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.hamburger-btn {
+  color: var(--dark-nav-default);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  display: none;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* Hide desktop menu items on mobile */
+@media (max-width: 768px) {
+  .desktop-menu {
+    display: none;
+  }
+  .hamburger-btn {
+    display: block;
+  }
+}
+
+/* Hide mobile menu button on desktop */
+@media (min-width: 769px) {
+  .hamburger-btn {
+    display: none;
+  }
+}

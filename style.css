@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  /* Base colors */
+  --color-primary: #1c79af;
+  --color-primary-hover: #135e89;
+  --color-text: #333333;
+  --color-text-dark: #fdfdfd;
+
+  /* Light theme */
+  --light-bg: #f5f5f5;
+  --light-navbar-bg: #ffffff;
+  --light-dropdown-bg: #ffffff;
+  --light-hover-bg: #e5e7eb;
+  --light-nav-default: #444444;
+  --light-nav-hover: #1c79af;
+  --light-toggle-hover: #09151c;
+
+  /* Dark theme */
+  --dark-bg: #09151c;
+  --dark-navbar-bg: #02111a;
+  --dark-dropdown-bg: #02111a;
+  --dark-hover-bg: #09151c;
+  --dark-nav-default: #d5d5d5;
+  --dark-nav-hover: #1c79af;
+  --dark-toggle-hover: #ffffff;
+
+  /* Shadow */
+  --shadow-default: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.parent {
+display: grid;
+grid-template-columns: repeat(6, 1fr);
+grid-column-gap: 20px;
+grid-row-gap: 20px;
+}

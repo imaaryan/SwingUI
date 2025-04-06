@@ -1,0 +1,49 @@
+/* animated gradients bg */
+
+.swing-ocean-gradient-animate {
+  background: linear-gradient(-45deg, #3badb2, #004aad, #3badb2, #004aad);
+  background-size: 300% 300%;
+  animation: gradientBG 8s ease infinite;
+}
+
+.swing-fire-gradient-animate {
+  background: linear-gradient(-45deg, #f5af19, #f12711, #f5af19, #f12711);
+  background-size: 300% 300%;
+  animation: gradientBG 8s ease infinite;
+}
+
+.swing-peach-gradient-animate {
+  background: linear-gradient(-45deg, #ffc371, #ff5f6d, #ffc371, #ff5f6d);
+  background-size: 300% 300%;
+  animation: gradientBG 8s ease infinite;
+}
+
+.swing-love-gradient-animate {
+  background: linear-gradient(-45deg, #dd5950, #cb2d3e, #dd5950, #cb2d3e);
+  background-size: 300% 300%;
+  animation: gradientBG 8s ease infinite;
+}
+
+.swing-deepsea-gradient-animate {
+  background: linear-gradient(-45deg, #000428, #004e92, #000428, #004e92);
+  background-size: 300% 300%;
+  animation: gradientBG 8s ease infinite;
+}
+
+.swing-royal-gradient-animate {
+  background: linear-gradient(-45deg, #734b6d, #42275a, #734b6d, #42275a);
+  background-size: 300% 300%;
+  animation: gradientBG 8s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SwingUI Animation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes burst {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      70% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .burst-animation {
+      display: inline-flex;
+    }
+
+    .letter {
+      display: inline-block;
+      opacity: 0;
+      transform: scale(1.5);
+      animation: burst 0.6s ease-out forwards;
+    }
+
+    .container {
+      background: linear-gradient(135deg, #22d3ee, #1e40af);
+      background-size: 200% 200%;
+      animation: gradient 5s ease infinite;
+    }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50% }
+      50% { background-position: 100% 50% }
+      100% { background-position: 0% 50% }
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen m-0 bg-gray-100 font-sans p-4">
+  <div class="container text-center px-14 py-12 w-auto min-w-[350px] rounded-lg shadow-lg">
+    <div class="burst-animation text-white text-6xl font-bold">
+      <span class="letter" style="animation-delay: 0.1s">S</span>
+      <span class="letter" style="animation-delay: 0.2s">w</span>
+      <span class="letter" style="animation-delay: 0.3s">i</span>
+      <span class="letter" style="animation-delay: 0.4s">n</span>
+      <span class="letter" style="animation-delay: 0.5s">g</span>
+      <span class="letter" style="animation-delay: 0.6s">U</span>
+      <span class="letter" style="animation-delay: 0.7s">I</span>
+    </div>
+  </div>
+</body>
+</html>

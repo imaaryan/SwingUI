@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SwingUI Animation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes typing {
+      from { 
+        width: 0;
+        opacity: 0;
+      }
+      to { 
+        width: 100%;
+        opacity: 1;
+      }
+    }
+    
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: white }
+    }
+
+    .typewriter {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 4px solid white;
+      width: 0;
+      padding-bottom: 10px;
+      animation: 
+        typing 2.5s ease-out forwards,
+        blink 0.8s step-end infinite;
+    }
+
+    .container {
+      background: linear-gradient(135deg, #22d3ee, #1e40af);
+      background-size: 200% 200%;
+      animation: gradient 5s ease infinite;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50% }
+      50% { background-position: 100% 50% }
+      100% { background-position: 0% 50% }
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen m-0 bg-gray-100 font-sans p-4">
+  <div class="container text-center px-14 py-12 w-auto min-w-[350px] rounded-lg shadow-lg">
+    <div class="typewriter text-white text-6xl font-bold">
+      SwingUI
+    </div>
+  </div>
+</body>
+</html>

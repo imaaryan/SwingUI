@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes ascend {
+      0% { 
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-ascend {
+      animation: ascend 2s ease-out;
+    }
+  </style>
+</head>
+<body class="flex justify-center items-center h-screen m-0 bg-white font-sans">
+  <div class="text-center p-[40px_60px] bg-gradient-to-r from-[#34d5eb] to-[#0052d4] bg-[length:200%_200%] rounded-lg shadow-lg">
+    <div class="text-white text-6xl font-bold animate-ascend drop-shadow-md">
+      SwingUI
+    </div>
+  </div>
+</body>
+</html>
