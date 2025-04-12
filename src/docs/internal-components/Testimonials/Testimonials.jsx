@@ -439,7 +439,7 @@ function Testimonial() {
     }, 100);
 
     return () => clearTimeout(timeoutId);
-  }, [showCode,darkMode]);
+  }, []);
 
   return (
     <div
