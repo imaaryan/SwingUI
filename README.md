@@ -91,7 +91,7 @@ Include these in your `<head>` section:
 <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
 
 <!-- SwingUI CSS -->
-<link href="https://cdn.jsdelivr.net/gh/imaaryan/cdn-swing@main/dist/assets/swingui.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/imaaryan/SwingUI@main/SwingUI/swing.css">
 ```
 
 ### 2. Add SwingUI CDN
@@ -100,7 +100,7 @@ Include these code above `</body>` Body tag end
 
 ```html
 <!-- SwingUI JS -->
-<script src="https://cdn.jsdelivr.net/gh/imaaryan/cdn-swing@main/dist/assets/swingui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/imaaryan/SwingUI@beta-live/SwingUI/swing.js"></script>
 ```
 ⚡ That's it — no config, no setup. Just plug and play..
 

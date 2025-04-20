@@ -78,7 +78,7 @@ const QuickStart = () => {
               <div className='w-full codeblock-wrapper mb-6'>
                 <CodeBlock
                   code={`<!-- SwingUI CSS Paste this code in Header -->
-<link href="https://cdn.jsdelivr.net/gh/imaaryan/cdn-swing@main/dist/assets/swingui.min.css" rel="stylesheet">`}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/imaaryan/SwingUI@main/SwingUI/swing.css">`}
                     />
               </div>
             </div>
@@ -86,7 +86,7 @@ const QuickStart = () => {
             <div className='w-full codeblock-wrapper mb-8'>
               <CodeBlock
                 code={`<!-- SwingUI JS Paste this code above Body tag end -->
-<script src="https://cdn.jsdelivr.net/gh/imaaryan/cdn-swing@main/dist/assets/swingui.min.js"></script>`}
+<script src="https://cdn.jsdelivr.net/gh/imaaryan/SwingUI@main/SwingUI/swing.js"></script>`}
                   />
             </div>
             <p className='mb-6'>
