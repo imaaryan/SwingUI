@@ -101,8 +101,9 @@ const TextGradient = () => {
   ];
 
   return (
+    <div>
     <main
-      className={`w-full transition-colors duration-300 ${
+      className={`w-full min-h-[100dvh] transition-colors duration-300 ${
         darkMode
           ? 'bg-[var(--dark-bg)] text-[var(--color-text-dark)]'
           : 'bg-[var(--light-bg)] text-[var(--color-text)]'
@@ -251,8 +252,10 @@ const TextGradient = () => {
           </div>
         </div>
       </div>
-      <BottomFooter/>
+
     </main>
+    <BottomFooter/>
+    </div>
   );
 };
 

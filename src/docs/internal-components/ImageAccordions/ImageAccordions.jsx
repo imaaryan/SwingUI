@@ -103,8 +103,9 @@ const ImageAccordions = () => {
   // ];
 
   return (
+    <div>
     <div
-      className={`w-full transition-colors duration-300 ${
+      className={`w-full min-h-[100dvh] transition-colors duration-300 ${
         darkMode
           ? 'bg-[var(--dark-bg)] text-[var(--color-text-dark)]'
           : 'bg-[var(--light-bg)] text-[var(--color-text)]'
@@ -126,7 +127,7 @@ const ImageAccordions = () => {
         <PreviewCodeBtn showCode={showCode} setShowCode={setShowCode} />
 
         {!showCode ? (
-          <div className='flex justify-center items-center h-[300px] sm:h-[450px] md:h-[400px] lg:h-[600px] bg-gradient-to-b from-gray-100 to-blue-100 rounded-lg shadow-md'>
+          <div className='flex justify-center items-center h-[300px] sm:h-[450px] md:h-[400px] lg:h-[600px] bg-gray-200 rounded-lg shadow-md'>
             <div className='relative overflow-hidden rounded-[20px] shadow-lg flex'>
               <div className='flex gap-1 w-fit mx-auto'>
                 {items.map((item, i) => (
@@ -169,7 +170,8 @@ const ImageAccordions = () => {
           <Table data={propertiesData} columns={propertiesColumns} />
         </div> */}
       </div>
- <BottomFooter/>
+    </div>
+    <BottomFooter/>
     </div>
   );
 };
