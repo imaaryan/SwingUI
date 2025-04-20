@@ -218,7 +218,7 @@ const SpotLightText = () => {
         />
 
       <div className='max-w-5xl mx-auto  py-2 sm:p-1'>
-      <h3 className='text-xl sm:text-2xl font-semibold mb-2'>Swing Particle Canvas</h3>
+      <h3 className='text-xl sm:text-2xl font-semibold mb-2'>Swing BlackHole Canvas</h3>
         <p className='mb-10 sm:mb-16'>
         SwingUI's interactive cursor component creates a striking visual contrast with its blend-mode inversion effect, transforming mouse movement into a dynamic design element.
         </p>
