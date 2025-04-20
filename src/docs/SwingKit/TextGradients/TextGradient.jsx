@@ -3,9 +3,11 @@ import CopyButton from '../../components/copyButton/copyButton.jsx';
 import transitions from './TextGradientData.js';
 import { useTheme } from '../../../context/ThemeContext.jsx';
 import './style.css';
+import BottomFooter from '../../../components/BottomFooter.jsx';
 
 const TransitionItem = ({ transition }) => {
   const [isHovered, setIsHovered] = useState(false);
+  
 
   return (
     <div
@@ -56,9 +58,52 @@ const TextGradient = () => {
   //   },
   // ];
 
+  const propertiesData = [
+    {
+      className: '.swing-ocean-gradient-text',
+      description: 'Ocean-inspired animated gradient applied to text',
+    },
+    {
+      className: '.swing-fire-gradient-text',
+      description: 'Fiery animated gradient style for bold, energetic text',
+    },
+    {
+      className: '.swing-love-gradient-text',
+      description: 'Soft, romantic gradient animation for expressive content',
+    },
+    {
+      className: '.swing-deepsea-gradient-text',
+      description: 'Deep blue animated tones resembling underwater vibes',
+    },
+    {
+      className: '.swing-royal-gradient-text',
+      description: 'Elegant gradient animation for premium or regal sections',
+    },
+    {
+      className: '.swing-peach-gradient-text',
+      description: 'Warm, cheerful gradient for friendly and lively designs',
+    },
+  ];
+
+  const implementationData = [
+    {
+      className: '.swing-ocean-gradient-text',
+      example: '<h1 class="swing-ocean-gradient-text">Hello World</h1>',
+    },
+    {
+      className: '.swing-fire-gradient-text',
+      example: '<p class="swing-fire-gradient-text">Blazing Fast</p>',
+    },
+    {
+      className: '.swing-love-gradient-text',
+      example: '<span class="swing-love-gradient-text">Made with Love</span>',
+    },
+  ];
+
   return (
+    <div>
     <main
-      className={`w-full transition-colors duration-300 ${
+      className={`w-full min-h-[100dvh] transition-colors duration-300 ${
         darkMode
           ? 'bg-[var(--dark-bg)] text-[var(--color-text-dark)]'
           : 'bg-[var(--light-bg)] text-[var(--color-text)]'
@@ -92,31 +137,30 @@ const TextGradient = () => {
               ))}
             </div>
 
-            {/* <h2 className='text-2xl sm:text-3xl font-bold mb-6'>Properties</h2>
-            <div className='w-full mb-16 overflow-x-auto'>
+            <hr
+              className={`my-10 border-t ${
+                darkMode
+                  ? 'border-gray-700 opacity-30'
+                  : 'border-gray-300 opacity-50'
+                  }`}
+            />
+            
+            
+            <h2 className='text-xl sm:text-2xl font-semibold mb-4'>
+              Properties
+            </h2>
+            <div className='w-full mb-10 overflow-x-auto'>
               <table
                 className={`w-full border-collapse rounded-lg overflow-hidden ${
                   darkMode ? 'bg-gray-800' : 'bg-gray-50'
-                }`}
+                  }`}
               >
                 <thead>
-                  <tr className={`${darkMode ? 'bg-gray-700' : 'bg-gray-100'}`}>
-                    <th
-                      className='py-3 px-4 text-left font-semibold text-sm w-2/5'
-                      style={{ whiteSpace: 'normal', wordBreak: 'break-all' }}
-                    >
+                  <tr className={`${darkMode ? 'bg-gray-700' : 'bg-gray-200'}`}>
+                    <th className='py-3 px-4 text-left font-semibold'>
                       Class Name
                     </th>
-                    <th
-                      className='py-3 px-4 text-left font-semibold text-sm w-1/5'
-                      style={{ whiteSpace: 'normal' }}
-                    >
-                      Section
-                    </th>
-                    <th
-                      className='py-3 px-4 text-left font-semibold text-sm w-2/5'
-                      style={{ whiteSpace: 'normal' }}
-                    >
+                    <th className='py-3 px-4 text-left font-semibold'>
                       Description
                     </th>
                   </tr>
@@ -124,47 +168,94 @@ const TextGradient = () => {
                 <tbody>
                   {propertiesData.map((item, index) => (
                     <tr
-                      key={index}
+                    key={index}
                       className={`border-t ${
                         darkMode ? 'border-gray-700' : 'border-gray-200'
                       }`}
-                    >
-                      <td
-                        className='py-3 px-4 text-sm'
-                        style={{
-                          whiteSpace: 'pre-wrap',
-                          wordBreak: 'break-word',
-                        }}
                       >
+                      <td className='py-3 px-4'>
                         <code
-                          className={`px-2 py-1 rounded text-sm block w-full ${
+                          className={`px-2 py-1 rounded text-sm ${
                             darkMode ? 'bg-gray-700' : 'bg-gray-200'
                           }`}
                         >
                           .{item.className}
                         </code>
                       </td>
-                      <td className='py-3 px-4 text-sm font-medium'>
-                        {item.section}
-                      </td>
-                      <td className='py-3 px-4 text-sm'>{item.description}</td>
+                      <td className='py-3 px-4'>{item.description}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-            </div> */}
+            </div>
 
             <hr
               className={`my-10 border-t ${
                 darkMode
                   ? 'border-gray-700 opacity-30'
                   : 'border-gray-300 opacity-50'
-              }`}
+                  }`}
             />
+
+       
+            <h2 className='text-xl sm:text-2xl font-semibold mb-4'>
+              Implementation Examples
+            </h2>
+            <div className='w-full mb-10 overflow-x-auto'>
+              <table
+                className={`w-full border-collapse rounded-lg overflow-hidden ${
+                  darkMode ? 'bg-gray-800' : 'bg-gray-50'
+                }`}
+              >
+                <thead>
+                  <tr className={`${darkMode ? 'bg-gray-700' : 'bg-gray-200'}`}>
+                    <th className='py-3 px-4 text-left font-semibold'>
+                      Class Name
+                    </th>
+                    <th className='py-3 px-4 text-left font-semibold'>
+                      Usage Snippet
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {implementationData.map((item, index) => (
+                    <tr
+                    key={index}
+                    className={`border-t ${
+                        darkMode ? 'border-gray-700' : 'border-gray-200'
+                        }`}
+                        >
+                      <td className='py-3 px-4'>
+                        <code
+                          className={`px-2 py-1 rounded text-sm ${
+                            darkMode ? 'bg-gray-700' : 'bg-gray-200'
+                          }`}
+                        >
+                          .{item.className}
+                        </code>
+                      </td>
+                      <td className='py-3 px-4'>
+                        <code
+                          className={`px-2 py-1 rounded text-sm ${
+                            darkMode ? 'bg-gray-700' : 'bg-gray-200'
+                          }`}
+                        >
+                          {item.example}
+                        </code>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            
           </div>
         </div>
       </div>
+
     </main>
+    <BottomFooter/>
+    </div>
   );
 };
 

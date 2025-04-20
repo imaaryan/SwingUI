@@ -59,8 +59,10 @@ function Footer() {
           <div className='w-full md:w-auto flex justify-center md:justify-end'>
             <div className='flex flex-wrap justify-center md:justify-end gap-4 md:gap-6 font-normal'>
               <a
-                href='#'
+                href='https://github.com/imaaryan/SwingUI'
                 className='hover:text-[var(--dark-nav-hover)] transition-colors'
+                rel='noopener noreferrer'
+                target='_blank'
               >
                 Github
               </a>

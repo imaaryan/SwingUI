@@ -1,0 +1,72 @@
+#svg-id {
+    zoom: 1.8;
+  }
+
+  /* Transition for all hexagon containers */
+  #path-container-g-v1,
+  #path-container-g-v2,
+  #path-container-g-v3,
+  #path-container-g-v4,
+  #path-container-g-v5,
+  #path-container-g-v6 {
+    transition: 0.3s ease-in-out;
+  }
+
+  /* Hover effect - move up */
+  #path-container-g-v1:hover,
+  #path-container-g-v2:hover,
+  #path-container-g-v3:hover,
+  #path-container-g-v4:hover,
+  #path-container-g-v5:hover,
+  #path-container-g-v6:hover {
+    transform: translate(0px, -20px);
+    cursor: pointer;
+  }
+
+  /* Instagram hover effect */
+  #path-container-g-v1:hover g path {
+    fill: url(#instagram_gradient);
+  }
+  #path-container-g-v1:hover #line-container {
+    stroke: url(#instagram_gradient);
+  }
+
+  /* GitLab hover effect */
+  #path-container-g-v2:hover g path {
+    fill: url(#gitlab_gradient);
+  }
+  #path-container-g-v2:hover #line-container {
+    stroke: url(#gitlab_gradient);
+  }
+
+  /* PayPal hover effect */
+  #path-container-g-v3:hover g path {
+    fill: #009cde;
+  }
+  #path-container-g-v3:hover #line-container {
+    stroke: #009cde;
+  }
+
+  /* Telegram hover effect */
+  #path-container-g-v4:hover g path {
+    fill: #26a5e4;
+  }
+  #path-container-g-v4:hover #line-container {
+    stroke: #26a5e4;
+  }
+
+  /* Spotify hover effect */
+  #path-container-g-v5:hover g path {
+    fill: #1db954;
+  }
+  #path-container-g-v5:hover #line-container {
+    stroke: #1db954;
+  }
+
+  /* Discord hover effect */
+  #path-container-g-v6:hover g path {
+    fill: #5865f2;
+  }
+  #path-container-g-v6:hover #line-container {
+    stroke: #5865f2;
+  }

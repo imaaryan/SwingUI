@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PreviewCodeBtn from '../../../components/PreviewCodeBtn.jsx';
 import { useTheme } from '../../../context/ThemeContext.jsx';
 import CodeBlock from '../../components/CodeBlock/CodeBlock.jsx';
+import BottomFooter from '../../../components/BottomFooter.jsx';
+import "./Pricing.js"
 import './Pricing.css';
 
 function Pricing() {
@@ -12,7 +14,7 @@ function Pricing() {
   const htmlCssCode = `<div class="w-full max-w-7xl mx-auto text-center px-4 sm:px-6 mb-8 md:mb-12 lg:mb-16">
 
     <div class="flex flex-col items-center lg:flex-row justify-center mt-6 sm:mt-8 space-y-4 lg:space-y-0 lg:space-x-4 relative">
-      <div class="relative w-64 h-12 bg-gray-100 rounded-md flex items-center overflow-hidden">
+      <div class="relative w-58 h-12 bg-gray-100 rounded-md flex items-center overflow-hidden">
         <div id="toggleSlider" class="absolute top-1 left-1 w-[calc(50%-0.5rem)] h-10 bg-black rounded-md transition-all duration-300 ease-in-out z-0"></div>
         <button id="monthlyBtn" class="w-1/2 z-10 text-center text-sm font-medium text-gray-700 relative">
           Monthly
@@ -24,7 +26,6 @@ function Pricing() {
     </div>
   </div>
 
-  <!-- Pricing Cards -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 w-full max-w-7xl mx-auto px-4 sm:px-6 mb-12 sm:mb-16">
 
     <div class="border border-gray-200 rounded-lg p-6 sm:p-8 flex flex-col">
@@ -135,23 +136,27 @@ function Pricing() {
 
       return () => clearTimeout(timeoutId);
     }
-  }, [showCode, darkMode]);
+  });
 
   return (
+    <div>
     <div
-      className={`w-full px-4 py-6  transition-colors duration-300 ${
+      className={`w-full py-6 min-h-[100dvh]  transition-colors duration-300 ${
         darkMode
           ? 'bg-[var(--dark-bg)] text-[var(--color-text-dark)]'
           : 'bg-[var(--light-bg)] text-[var(--color-text)]'
-      } p-4`}
+      }  px-4`}
     >
       <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-6'>
-        <h2 className='text-3xl sm:text-4xl font-bold mb-2'>Pricing</h2>
-        <p className='mb-10 sm:mb-16'>
-          The Pricing component provides a visually appealing and responsive
-          pricing section, with a dynamic layout that adjusts to both light and
-          dark modes. It integrates a live preview feature and supports user
-          interaction with the ability to toggle code display.
+        <h2 className='text-3xl mb-3 sm:mb-8 sm:text-4xl font-bold pb-4'>
+          Pricing
+        </h2>
+        <h2 className='text-xl sm:text-2xl font-semibold mb-2'>
+          Swing Tier Pricing
+        </h2>
+        <p className='mb-6 sm:mb-8 md:mb-10 lg:mb-12'>
+          SwingUI's tiered pricing component offers a clean, interactive layout
+          with smooth plan toggling between monthly/annual billing.
         </p>
 
         <PreviewCodeBtn showCode={showCode} setShowCode={setShowCode} />
@@ -179,6 +184,9 @@ function Pricing() {
           </div>
         )}
       </div>
+
+    </div>
+    <BottomFooter/>
     </div>
   );
 }

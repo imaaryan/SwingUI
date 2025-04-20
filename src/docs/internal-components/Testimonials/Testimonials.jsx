@@ -15,6 +15,7 @@ import pic9 from '../../../assets/Images-For-Testimonials/pic9.webp';
 import pic10 from '../../../assets/Images-For-Testimonials/pic10.webp';
 import pic11 from '../../../assets/Images-For-Testimonials/pic11.webp';
 import pic12 from '../../../assets/Images-For-Testimonials/pic12.webp';
+import BottomFooter from '../../../components/BottomFooter.jsx';
 
 function Testimonial() {
   const [showCode, setShowCode] = useState(false);
@@ -330,6 +331,7 @@ function Testimonial() {
     </div>
   </div> 
 `;
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       let prevWidth = window.innerWidth;
@@ -339,46 +341,67 @@ function Testimonial() {
       const getInitialWidth = (container) => {
         let width = 0;
         const items = container.querySelectorAll('.swing-slider-item');
-        const gap = parseFloat(getComputedStyle(container).gap || 0);
+
+        // Get computed style to properly handle gap
+        const computedStyle = getComputedStyle(container);
+        const gap = parseFloat(
+          computedStyle.columnGap || computedStyle.gap || 0,
+        );
 
         items.forEach((item) => {
           width += item.offsetWidth + gap;
         });
 
+        // Adjust for the last item's gap
+        if (items.length > 0) {
+          width -= gap;
+        }
+
         return width;
       };
 
       const setValues = (container, width, indexI, indexJ) => {
+        // Calculate how many sets of items we need to fill the screen at least twice
         const parentWidth = container.parentElement.offsetWidth;
-        const ratio = Math.ceil(parentWidth / width);
-        const total = ratio + 1;
+        const minDuplicateSets = Math.max(
+          3,
+          Math.ceil((parentWidth * 2) / width),
+        );
 
+        // Clear existing duplicated items
         while (
           container.children.length >
-          sliderHtml[indexI][indexJ].split('swing-slider-item').length - 1
+          sliderHtml[indexI][indexJ].childElementCount
         ) {
-          container.lastChild.remove();
+          container.removeChild(container.lastChild);
         }
 
-        for (let i = 0; i < ratio; i++) {
-          const div = document.createElement('div');
-          div.innerHTML = sliderHtml[indexI][indexJ];
-          container.append(...div.children);
+        // Clone and append the sets of items
+        for (let i = 0; i < minDuplicateSets; i++) {
+          const items = sliderHtml[indexI][indexJ].children;
+          for (let j = 0; j < items.length; j++) {
+            const clone = items[j].cloneNode(true);
+            container.appendChild(clone);
+          }
         }
 
-        container.style.width = `${width * total}px`;
-        container.style.setProperty('--total', total);
-        container.style.setProperty('--est-speed', width / 100);
+        // Set the container width to accommodate all items
+        const totalWidth = width * (minDuplicateSets + 1);
+        container.style.width = `${totalWidth}px`;
+
+        // Update CSS variables for animation
+        container.style.setProperty('--total', minDuplicateSets + 1);
+        container.style.setProperty('--est-speed', width / 50); // Adjusted for smoother animation
       };
 
-     const setDirection = (container, width) => {
-  if (
-    getComputedStyle(container).getPropertyValue('--direction') === '-1'
-  ) {
-    container.style.marginLeft = `-${width}px`;
-  }
-};
-
+      const setDirection = (container, width) => {
+        if (
+          getComputedStyle(container).getPropertyValue('--direction').trim() ===
+          '-1'
+        ) {
+          container.style.marginLeft = `-${width}px`;
+        }
+      };
 
       const setPauseOnHover = (container) => {
         const pauseOnHover =
@@ -389,49 +412,108 @@ function Testimonial() {
         const shouldPause =
           getComputedStyle(container).getPropertyValue(pauseOnHover).trim() ===
           'true';
-
         container.style.setProperty(
           '--poh',
           shouldPause ? 'paused' : 'running',
         );
       };
 
+      // Initialize sliders
       sliders.forEach((slider, indexI) => {
         sliderHtml[indexI] = [];
         const containers = slider.querySelectorAll('.slider-container');
 
         containers.forEach((container, indexJ) => {
-          sliderHtml[indexI][indexJ] = container.innerHTML;
+          // Store initial HTML structure as DocumentFragment for efficient cloning
+          const fragment = document.createDocumentFragment();
+          Array.from(container.children).forEach((child) => {
+            fragment.appendChild(child.cloneNode(true));
+          });
+          sliderHtml[indexI][indexJ] = fragment;
+
+          // Get initial width calculation
           const width = getInitialWidth(container);
-          if (width) {
+
+          if (width > 0) {
             setValues(container, width, indexI, indexJ);
             setDirection(container, width);
+            setPauseOnHover(container);
           }
-          setPauseOnHover(container);
         });
 
+        // Add showing class after initialization
         slider.classList.add('showing');
       });
 
+      // Handle window resize
       const handleResize = () => {
         if (window.innerWidth === prevWidth) return;
         prevWidth = window.innerWidth;
 
         sliders.forEach((slider, indexI) => {
           const containers = slider.querySelectorAll('.slider-container');
+
           containers.forEach((container, indexJ) => {
-            container.innerHTML = sliderHtml[indexI][indexJ];
+            // Clear container and add back original items
+            container.innerHTML = '';
+            const clone = document.createDocumentFragment();
+            Array.from(sliderHtml[indexI][indexJ].children).forEach((child) => {
+              clone.appendChild(child.cloneNode(true));
+            });
+            container.appendChild(clone);
+
+            // Recalculate width and set values
             const width = getInitialWidth(container);
-            if (width) {
+            if (width > 0) {
               setValues(container, width, indexI, indexJ);
               setDirection(container, width);
+              setPauseOnHover(container);
             }
-            setPauseOnHover(container);
           });
         });
       };
 
       window.addEventListener('resize', handleResize);
+
+      // Add CSS for animation if not already present
+      if (!document.getElementById('swing-slider-animation')) {
+        const styleElement = document.createElement('style');
+        styleElement.id = 'swing-slider-animation';
+        styleElement.textContent = `
+          .swing-slider-wrapper {
+            overflow: hidden;
+            position: relative;
+          }
+          .swing-scrolling-image {
+            overflow: visible;
+            position: relative;
+          }
+          .slider-container {
+            display: flex;
+            column-gap: 16px;
+            animation: slideContent calc(var(--est-speed, 15) * var(--speed, 10) * 1s) 
+                        linear infinite;
+            animation-play-state: var(--poh, running);
+          }
+          .swing-scrolling-image:hover .slider-container {
+            animation-play-state: var(--poh, running);
+          }
+          .swing-slider-item {
+            flex: 0 0 auto;
+            width: 300px;
+            height: 100%;
+          }
+          @keyframes slideContent {
+            from {
+              transform: translateX(0);
+            }
+            to {
+              transform: translateX(calc(var(--direction, 1) * -100%));
+            }
+          }
+        `;
+        document.head.appendChild(styleElement);
+      }
 
       // Cleanup
       return () => {
@@ -440,42 +522,51 @@ function Testimonial() {
     }, 100);
 
     return () => clearTimeout(timeoutId);
-  }, [showCode,darkMode]);
+  },);
 
- return (
+  return (
+    <div>
     <div
-      className={`w-full max-w-screen-xl mx-auto px-4 py-0  transition-colors duration-300 ${
+      className={`w-full min-h-[100dvh] max-w-screen-xl mx-auto px-4 py-0  transition-colors duration-300 ${
         darkMode
           ? 'bg-[var(--dark-bg)] text-[var(--color-text-dark)]'
           : 'bg-[var(--light-bg)] text-[var(--color-text)]'
       } overflow-x-hidden`}
     >
       <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12'>
-      <h1 className='text-3xl sm:text-4xl font-bold mb-2'>Testimonial Component</h1>
-      <p className='mb-15'>
-      This dynamic Tabs component provides seamless navigation between categorized
-content blocks with responsive design, interactive hover effects, and optional code
-previews — ideal for modern UI/UX needs.
-      </p>
+        <h1 className='text-3xl sm:text-4xl font-bold mb-4 sm:mb-12'>
+          Testimonial
+        </h1>
+        <h3 className='text-xl sm:text-2xl font-semibold mb-2'>Swing Dynamic Testimonials</h3>
+        <p className='mb-15'>
+          This dynamic Tabs component provides seamless navigation between
+          categorized content blocks with responsive design, interactive hover
+          effects, and optional code previews — ideal for modern UI/UX needs.
+        </p>
 
-      <PreviewCodeBtn showCode={showCode} setShowCode={setShowCode} />
+        <PreviewCodeBtn showCode={showCode} setShowCode={setShowCode} />
 
-      {!showCode && (
-        <div
-          key={`${darkMode}-${showCode}`}
-          className={`flex justify-center items-center overflow-hidden bg-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-lg shadow-md`}
-        >
-          {/* Render live preview */}
-          <div className='w-full' dangerouslySetInnerHTML={{ __html: htmlCssCode }} />
-        </div>
-      )}
+        {!showCode && (
+          <div
+            key={`${darkMode}-${showCode}`}
+            className={`flex justify-center items-center overflow-hidden bg-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-lg shadow-md`}
+          >
+            {/* Render live preview */}
+            <div
+              className='w-full'
+              dangerouslySetInnerHTML={{ __html: htmlCssCode }}
+            />
+          </div>
+        )}
 
-      {showCode && (
-        <div className='w-full my-4 rounded-xl'>
-          <CodeBlock language='html' code={htmlCssCode} />
-        </div>
-      )}
-    </div>
+        {showCode && (
+          <div className='w-full my-4 rounded-xl'>
+            <CodeBlock language='html' code={htmlCssCode} />
+          </div>
+        )}
+      </div>
+      </div>
+      <BottomFooter/>
     </div>
   );
 }

@@ -1,0 +1,8 @@
+.tilt-zoom {
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+.tilt-zoom:hover {
+  transform: perspective(1000px) scale(1.05) rotateX(5deg) rotateY(-5deg);
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.3);
+}

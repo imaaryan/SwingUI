@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Picsum Gallery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      const items = document.querySelectorAll(".gallery-item");
+      const defaultIndex = 2;
+
+      function setActive(index) {
+        items.forEach((item, i) => {
+          const overlay = item.querySelector(".overlay");
+          const content = item.querySelector(".content");
+
+          if (i === index) {
+            item.classList.replace("w-[50px]", "w-[450px]");
+            overlay.classList.replace("opacity-0", "opacity-100");
+            content.classList.remove("hidden");
+          } else {
+            item.classList.replace("w-[450px]", "w-[50px]");
+            overlay.classList.replace("opacity-100", "opacity-0");
+            content.classList.add("hidden");
+          }
+        });
+      }
+
+      setActive(defaultIndex);
+
+      items.forEach((item, i) => {
+        item.addEventListener("mouseenter", () => setActive(i));
+        item.addEventListener("click", () => setActive(i));
+      });
+    });
+  </script>
+</head>
+<body class="bg-white text-black">
+  <div class="flex gap-1 mx-auto py-10 w-fit">
+    <!-- Repeat this block 5 times -->
+    <div class="gallery-item relative w-[50px] h-[400px] flex-shrink-0 transition-[width] duration-500 ease-linear rounded-xl overflow-hidden">
+      <img src="https://picsum.photos/400/400?random=1" class="w-full h-full object-cover" alt=""/>
+      <div class="overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-500"></div>
+      <div class="content hidden absolute bottom-0 left-0 right-0 p-4 text-white">
+        <h1 class="text-2xl font-semibold">Title 1</h1>
+        <p class="leading-tight">Description 1 goes here.</p>
+      </div>
+    </div>
+
+    <div class="gallery-item relative w-[50px] h-[400px] flex-shrink-0 transition-[width] duration-500 ease-linear rounded-xl overflow-hidden">
+      <img src="https://picsum.photos/400/400?random=2" class="w-full h-full object-cover" alt=""/>
+      <div class="overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-500"></div>
+      <div class="content hidden absolute bottom-0 left-0 right-0 p-4 text-white">
+        <h1 class="text-2xl font-semibold">Title 2</h1>
+        <p class="leading-tight">Description 2 goes here.</p>
+      </div>
+    </div>
+
+    <div class="gallery-item relative w-[50px] h-[400px] flex-shrink-0 transition-[width] duration-500 ease-linear rounded-xl overflow-hidden">
+      <img src="https://picsum.photos/400/400?random=3" class="w-full h-full object-cover" alt=""/>
+      <div class="overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-500"></div>
+      <div class="content hidden absolute bottom-0 left-0 right-0 p-4 text-white">
+        <h1 class="text-2xl font-semibold">Title 3</h1>
+        <p class="leading-tight">Description 3 goes here.</p>
+      </div>
+    </div>
+
+    <div class="gallery-item relative w-[50px] h-[400px] flex-shrink-0 transition-[width] duration-500 ease-linear rounded-xl overflow-hidden">
+      <img src="https://picsum.photos/400/400?random=4" class="w-full h-full object-cover" alt=""/>
+      <div class="overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-500"></div>
+      <div class="content hidden absolute bottom-0 left-0 right-0 p-4 text-white">
+        <h1 class="text-2xl font-semibold">Title 4</h1>
+        <p class="leading-tight">Description 4 goes here.</p>
+      </div>
+    </div>
+
+    <div class="gallery-item relative w-[50px] h-[400px] flex-shrink-0 transition-[width] duration-500 ease-linear rounded-xl overflow-hidden">
+      <img src="https://picsum.photos/400/400?random=5" class="w-full h-full object-cover" alt=""/>
+      <div class="overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-500"></div>
+      <div class="content hidden absolute bottom-0 left-0 right-0 p-4 text-white">
+        <h1 class="text-2xl font-semibold">Title 5</h1>
+        <p class="leading-tight">Description 5 goes here.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

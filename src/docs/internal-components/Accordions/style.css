@@ -1,0 +1,51 @@
+.accordion-item {
+  transition: all 1s ease-in-out;
+}
+
+.accordion-header {
+  transition: background-color 1s ease;
+}
+
+.accordion-header:hover {
+  background-color: #1c79af;
+}
+
+.accordion-icon {
+  transition: transform 1s ease;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s ease-in-out;
+}
+
+.accordion-content.block {
+  max-height: 500px; /* Adjust this value based on your content */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .accordion-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .accordion-content {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .accordion-header {
+    padding: 12px;
+  }
+
+  .accordion-header h2 {
+    font-size: 1rem;
+  }
+
+  .accordion-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}

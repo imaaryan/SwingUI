@@ -2,6 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import PreviewCodeBtn from '../../../components/PreviewCodeBtn.jsx';
 import { useTheme } from '../../../context/ThemeContext.jsx';
 import CodeBlock from '../../components/CodeBlock/CodeBlock.jsx';
+
+import Table from '../../components/TableComponent/Table.jsx';
+
+import BottomFooter from '../../../components/BottomFooter.jsx';
+
+
+import './Feature.css';
 import img1 from '../../../assets/Images-For-Gallery/img1.webp';
 import img2 from '../../../assets/Images-For-Gallery/img2.webp';
 import img3 from '../../../assets/Images-For-Gallery/img3.webp';
@@ -14,7 +21,6 @@ function Feature() {
 
   // Set up the scroll synchronization with more robust event handling
   useEffect(() => {
-    // Function to initialize synchronization
     function initScrollSync() {
       if (!showCode && previewRef.current) {
         // Small delay to ensure DOM is fully rendered
@@ -78,24 +84,19 @@ function Feature() {
   <div class="flex items-center justify-center p-2 sm:p-4">
     <div id="mainContainer" class="relative flex flex-col w-full max-w-7xl mx-auto border border-gray-300 rounded-lg overflow-hidden bg-white">
 
-      <!-- Fade overlays with responsive heights -->
       <div class="fade-top absolute top-0 left-0 right-0 w-full h-12 sm:h-16 md:h-20 lg:h-24 z-10 pointer-events-none 
         bg-gradient-to-b from-white/90 to-transparent"></div>
       <div class="fade-bottom absolute bottom-0 left-0 right-0 w-full h-12 sm:h-16 md:h-20 lg:h-24 z-10 pointer-events-none 
         bg-gradient-to-t from-white/90 to-transparent"></div>
 
-      <!-- Main content with specific iPad/tablet breakpoints -->
       <div class="flex flex-col md:flex-row w-full p-3 sm:p-4 md:p-6 lg:p-8">
-        
-        <!-- Text area with improved iPad/tablet sizing -->
+
         <div id="textArea" class="flex flex-col justify-center p-3 sm:p-4 md:p-6 lg:p-8 w-full md:w-1/2 order-2 md:order-1">
           <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-2 sm:mb-3 md:mb-4">Random Heading</h1>
           <p class="text-sm sm:text-base md:text-lg text-gray-600">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, consectetur dolores fugiat magnam voluptates qui debitis saepe quas exercitationem dicta! Nihil, commodi culpa temporibus quibusdam vitae tenetur quae reprehenderit ducimus!
           </p>
         </div>
-        
-        <!-- Image slider with specific iPad/tablet height -->
         <div class="w-full md:w-1/2 order-1 md:order-2 p-2 sm:p-3 md:p-4">
           <div id="scrollContainer" class="relative w-full h-60 sm:h-72 md:h-96 lg:h-96 overflow-y-auto overscroll-contain scrollbar-hide rounded-lg">
             <div id="sliderContainer" class="w-full transition-transform duration-300 ease-out space-y-4 sm:space-y-5 md:space-y-6">
@@ -143,7 +144,6 @@ function Feature() {
   </div>
 `;
 
-  // Updated CSS with iPad-specific media queries
   const customCSS = `
     <style>
       /* Improved scrollbar handling for all devices */
@@ -198,95 +198,92 @@ function Feature() {
     </style>
   `;
 
-  const propertiesData = [
-    {
-      variable: 'State.currentScrollY',
-      type: 'number',
-      description:
-        'Tracks the current vertical scroll position of the carousel',
-    },
-    {
-      variable: 'State.targetScrollY',
-      type: 'number',
-      description: 'Target scroll position, adjusted based on user input',
-    },
-    {
-      variable: 'State.isAnimating',
-      type: 'boolean',
-      description: 'Indicates whether the scroll animation is in progress',
-    },
-    {
-      variable: 'State.maxScroll ',
-      type: 'number',
-      description:
-        'The maximum scroll limit to prevent scrolling beyond the images',
-    },
-    {
-      variable: 'State.itemHeight ',
-      type: 'number',
-      description: 'Height of the slider items, dynamically calculated',
-    },
-    {
-      variable: 'State.rafId ',
-      type: 'number',
-      description:
-        'Holds the requestAnimationFrame ID for cancelling the animation',
-    },
-  ];
+  // const galleryPropertiesData = [
+  //   {
+  //     propertyName: 'gradient overlays',
+  //     defaultValue:
+  //       'fade-top fade-bottom + bg-gradient-to-b/t from-white/90 to-transparent',
+  //     description:
+  //       'Creates a fading white gradient at the top and bottom of the scrollable area.',
+  //   },
+  //   {
+  //     propertyName: 'overlay positioning',
+  //     defaultValue: 'absolute top-0/bottom-0 left-0 right-0',
+  //     description: 'Positions the fade overlays at the top and bottom edges.',
+  //   },
+  //   {
+  //     propertyName: 'scrollable container',
+  //     defaultValue: 'overflow-y-auto overscroll-contain scrollbar-hide',
+  //     description:
+  //       'Enables vertical scrolling, prevents bounce effects, and hides the scrollbar.',
+  //   },
+  //   {
+  //     propertyName: 'scroll container height',
+  //     defaultValue: 'h-60 sm:h-72 md:h-96 lg:h-96',
+  //     description: 'Makes the image area scrollable and responsive in height.',
+  //   },
+  //   {
+  //     propertyName: 'image transition',
+  //     defaultValue: 'transition-shadow duration-300',
+  //     description: 'Smoothly transitions the shadow on hover over 300ms.',
+  //   },
+  // ];
 
-  const animationSettings = [
-    {
-      variable: 'SCROLL_STEP',
-      value: 100,
-      description: 'Defines the scroll step increment for wheel movements',
-    },
-    {
-      variable: 'MOBILE_BREAKPOINT',
-      value: 640,
-      description: 'Breakpoint width for detecting mobile devices',
-    },
-    {
-      variable: 'EASING',
-      value: 0.1,
-      description: 'Defines the easing factor for smooth animations',
-    },
-  ];
+  // const galleryPropertiesColumns = [
+  //   {
+  //     key: 'propertyName',
+  //     title: 'Property Name',
+  //     width: 'w-1/5',
+  //   },
+  //   {
+  //     key: 'defaultValue',
+  //     title: 'Default Value',
+  //     width: 'w-1/3',
+  //     render: (value) => (
+  //       <code
+  //         className={`px-2 py-1 rounded text-sm ${
+  //           darkMode ? 'bg-gray-700' : 'bg-gray-200'
+  //         } inline-block min-w-full break-words`}
+  //       >
+  //         {value}
+  //       </code>
+  //     ),
+  //   },
+  //   {
+  //     key: 'description',
+  //     title: 'Description',
+  //     width: 'w-1/2',
+  //   },
+  // ];
 
   return (
+    <div>
     <div
-      className={`[@media(min-width:400px)]:w-[400px] [@media(min-width:500px)]:w-full [@media(width:820px)]:w-[500px] [@media(width:768px)]:w-[480px] transition-colors duration-300 ${
+      className={`w-full min-h-[100dvh] transition-colors duration-300 ${
         darkMode
           ? 'bg-[var(--dark-bg)] text-[var(--color-text-dark)]'
           : 'bg-[var(--light-bg)] text-[var(--color-text)]'
-      } py-6`}
+      } px-0 py-6`}
     >
-      <div className='max-w-5xl mx-auto px-3 sm:px-4 md:px-6 lg:px-6 py-4 sm:py-6 md:py-8'>
-        <h2 className='text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 md:mb-4'>
-          Features
+      <div className='max-w-5xl mx-auto px-2 sm:px-6 lg:px-8 py-8 sm:py-6'>
+        <h2 className='text-3xl mb-3 sm:mb-8 sm:text-4xl font-bold pb-4'>
+        Features
         </h2>
-        <p className='mb-6 sm:mb-8 md:mb-10 lg:mb-12 text-sm sm:text-base md:text-base'>
-          The Feature component displays a dynamic image slider with smooth
-          scroll functionality, using React hooks to handle state and
-          animations. It also includes a toggle to preview the HTML/CSS code
-          behind the feature, providing a seamless experience for both users and
-          developers.
+        <h2 className='text-xl sm:text-2xl font-semibold mb-2'>
+        Swing Glide Gallery
+        </h2>
+        <p className='mb-6 sm:mb-8 md:mb-10 lg:mb-12'>
+        SwingUI's dynamic duo panel blends immersive content with fluid image browsing, enhanced by signature gradient fades for effortless navigation.
         </p>
 
         <PreviewCodeBtn showCode={showCode} setShowCode={setShowCode} />
 
         {!showCode && (
-          <div
-            ref={previewRef}
-            key={`preview-${darkMode}-${showCode}`}
-            className={`flex justify-center items-center h-auto bg-gray-200 ${
-              darkMode ? 'bg-[var(--light-bg)]' : 'bg-[var(--light-bg)]'
-            } rounded-lg shadow-md w-full my-4 sm:my-6 md:my-8`}
-          >
+          <div className='flex justify-center items-center min-h-[12rem] bg-gray-200 rounded-lg shadow-md'>
             <div
+              ref={previewRef}
               className='w-full'
-              dangerouslySetInnerHTML={{
-                __html: customCSS + htmlCssCode,
-              }}
+              dangerouslySetInnerHTML={{ __html: customCSS + htmlCssCode }}
             />
           </div>
         )}
@@ -297,138 +294,25 @@ function Feature() {
           </div>
         )}
 
-        <hr
+        {/* <hr
           className={`my-6 sm:my-8 md:my-10 lg:my-10 border-t ${
             darkMode
               ? 'border-gray-700 opacity-30'
               : 'border-gray-300 opacity-50'
           }`}
-        />
+        /> */}
 
-        <h2 className='text-xl sm:text-2xl md:text-2xl font-bold mb-6 sm:mb-8 md:mb-8 mt-6 sm:mt-8 md:mt-10 lg:mt-10'>
-          State Management Variable
-        </h2>
-
-        <div className='w-full mb-8 sm:mb-10 md:mb-10 overflow-x-auto rounded-lg'>
-          <table
-            className={`w-full border-collapse rounded-lg overflow-hidden ${
-              darkMode ? 'bg-gray-800' : 'bg-gray-50'
-            }`}
-          >
-            <thead>
-              <tr className={`${darkMode ? 'bg-gray-700' : 'bg-gray-200'}`}>
-                <th className='py-2 sm:py-3 md:py-3 px-2 sm:px-4 md:px-4 text-left font-semibold text-sm sm:text-base'>
-                  Variable
-                </th>
-                <th className='py-2 sm:py-3 md:py-3 px-2 sm:px-4 md:px-4 text-left font-semibold text-sm sm:text-base'>
-                  Type
-                </th>
-                <th className='py-2 sm:py-3 md:py-3 px-2 sm:px-4 md:px-4 text-left font-semibold text-sm sm:text-base'>
-                  Description
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {propertiesData.map((item, index) => (
-                <tr
-                  key={index}
-                  className={`border-t ${
-                    darkMode ? 'border-gray-700' : 'border-gray-200'
-                  }`}
-                >
-                  <td className='py-2 sm:py-3 md:py-3 px-2 sm:px-4 md:px-4 text-sm'>
-                    <code
-                      className={`px-1 sm:px-2 py-1 rounded text-xs sm:text-sm ${
-                        darkMode ? 'bg-gray-700' : 'bg-gray-200'
-                      }`}
-                    >
-                      {item.variable}
-                    </code>
-                  </td>
-                  <td className='py-2 sm:py-3 md:py-3 px-2 sm:px-4 md:px-4 text-sm'>
-                    <code
-                      className={`px-1 sm:px-2 py-1 rounded text-xs sm:text-sm ${
-                        darkMode ? 'bg-gray-700' : 'bg-gray-200'
-                      }`}
-                    >
-                      {item.type}
-                    </code>
-                  </td>
-                  <td className='py-2 sm:py-3 md:py-3 px-2 sm:px-4 md:px-4 text-sm'>
-                    {item.description}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <hr
-          className={`my-6 sm:my-8 md:my-10 lg:my-10 border-t ${
-            darkMode
-              ? 'border-gray-700 opacity-30'
-              : 'border-gray-300 opacity-50'
-          }`}
-        />
-
-        <h2 className='text-xl sm:text-2xl md:text-2xl font-bold mb-6 sm:mb-8 md:mb-8 mt-6 sm:mt-8 md:mt-10 lg:mt-10'>
-          Transition and Animation Settings
-        </h2>
-
-        <div className='w-full mb-8 sm:mb-10 md:mb-10 overflow-x-auto rounded-lg'>
-          <table
-            className={`w-full border-collapse rounded-lg overflow-hidden ${
-              darkMode ? 'bg-gray-800' : 'bg-gray-50'
-            }`}
-          >
-            <thead>
-              <tr className={`${darkMode ? 'bg-gray-700' : 'bg-gray-200'}`}>
-                <th className='py-2 sm:py-3 md:py-3 px-2 sm:px-4 md:px-4 text-left font-semibold text-sm sm:text-base'>
-                  Property
-                </th>
-                <th className='py-2 sm:py-3 md:py-3 px-2 sm:px-4 md:px-4 text-left font-semibold text-sm sm:text-base'>
-                  Value
-                </th>
-                <th className='py-2 sm:py-3 md:py-3 px-2 sm:px-4 md:px-4 text-left font-semibold text-sm sm:text-base'>
-                  Description
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {animationSettings.map((item, index) => (
-                <tr
-                  key={index}
-                  className={`border-t ${
-                    darkMode ? 'border-gray-700' : 'border-gray-200'
-                  }`}
-                >
-                  <td className='py-2 sm:py-3 md:py-3 px-2 sm:px-4 md:px-4 text-sm'>
-                    <code
-                      className={`px-1 sm:px-2 py-1 rounded text-xs sm:text-sm ${
-                        darkMode ? 'bg-gray-700' : 'bg-gray-200'
-                      }`}
-                    >
-                      {item.variable}
-                    </code>
-                  </td>
-                  <td className='py-2 sm:py-3 md:py-3 px-2 sm:px-4 md:px-4 text-sm'>
-                    <code
-                      className={`px-1 sm:px-2 py-1 rounded text-xs sm:text-sm ${
-                        darkMode ? 'bg-gray-700' : 'bg-gray-200'
-                      }`}
-                    >
-                      {item.value}
-                    </code>
-                  </td>
-                  <td className='py-2 sm:py-3 md:py-3 px-2 sm:px-4 md:px-4 text-sm'>
-                    {item.description}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        {/* <h2 className='text-xl sm:text-2xl font-semibold mb-4'>Properties</h2>
+        <div className='mb-12'>
+          <Table
+            data={galleryPropertiesData}
+            columns={galleryPropertiesColumns}
+          />
+        </div> */}
       </div>
+
+    </div>
+    <BottomFooter/>
     </div>
   );
 }

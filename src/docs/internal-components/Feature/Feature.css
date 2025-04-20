@@ -1,0 +1,39 @@
+.Feature-custom-width {
+  width: 100%;
+}
+
+@media (min-width: 300px) and (max-width: 350px) {
+  .Feature-custom-width {
+    width: 320px;
+  }
+}
+
+@media (min-width: 400px) {
+  .Feature-custom-width {
+    width: 410px;
+  }
+}
+
+@media (min-width: 430px) {
+  .Feature-custom-width {
+    width: 430px;
+  }
+}
+
+@media (min-width: 500px) {
+  .Feature-custom-width {
+    width: 100%;
+  }
+}
+
+@media (width: 768px) {
+  .Feature-custom-width {
+    width: 480px;
+  }
+}
+
+@media (width: 820px) {
+  .Feature-custom-width {
+    width: 500px;
+  }
+}

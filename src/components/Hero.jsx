@@ -9,6 +9,7 @@ import '../docs/SwingKit/AnimatedGradients/style.css';
 import '../docs/SwingKit/Gradients/style.css';
 import darkherobg from '../assets/Hero-assets/darkherobg.webp';
 import { useTheme } from '../context/ThemeContext';
+import ComponentsFeaturesGallery from './ComponentsFeaturesGallery';
 
 const Hero = () => {
   const headingRef = useRef(null);
@@ -69,7 +70,7 @@ const Hero = () => {
 
   return (
     <section
-      className={`w-full min-h-screen flex flex-col items-center justify-center px-4 pt-16 pb-32 bg-no-repeat bg-cover bg-center ${
+      className={`w-screen min-h-screen flex flex-col items-center justify-center mt-[-70px] px-4 pt-38 pb-14 bg-no-repeat bg-cover bg-center ${
         darkMode
           ? ' text-[var(--color-text-dark)]'
           : ' text-[var(--color-text)]'
@@ -78,7 +79,7 @@ const Hero = () => {
     >
       {/* Text Content */}
       <div
-        className={`w-full text-center space-y-6 ${
+        className={`w-full text-center space-y-8 ${
           darkMode
             ? ' text-[var(--color-text-dark)]'
             : ' text-[var(--color-text)]'
@@ -118,7 +119,7 @@ const Hero = () => {
             Get Started For Free
           </Link>
           <Link
-            to='/components/button'
+            to='/components/accordion'
             className={`px-6 py-3  rounded-full w-[85%] sm:w-auto border border-gray-300 font-semibold hover:text-white hover:bg-gray-800 transition`}
           >
             Explore All Components
@@ -127,7 +128,7 @@ const Hero = () => {
       </div>
 
       {/* Bottom Image Section */}
-      <div
+      {/* <div
         ref={bottomImageSection}
         className='relative mt-10 sm:mt-20 w-full max-w-6xl px-4 flex items-center justify-center'
       >
@@ -149,7 +150,8 @@ const Hero = () => {
           alt='Small Right Floating'
           className='hidden sm:block absolute right-0 sm:-right-20 top-1/2 -translate-y-1/2 w-32 sm:w-70 z-30'
         />
-      </div>
+      </div> */}
+      <ComponentsFeaturesGallery />
     </section>
   );
 };

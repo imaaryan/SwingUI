@@ -1,0 +1,146 @@
+.gradient-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100dvh;
+        text-align: center;
+        color: white;
+        padding: 20px;
+        width: 100%;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        opacity: 0;
+        animation: fadeIn 2s ease-in forwards;
+      }
+
+      .logo {
+        width: 80%;
+        animation: fadeIn 2s ease-in forwards;
+        margin-bottom: -30px;
+      }
+
+      .launching-soon {
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        margin-top: 30px;
+        font-weight: 500;
+      }
+
+      .countdown-container {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+
+      .countdown-box {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        padding: 15px 20px;
+        border-radius: 10px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        min-width: 80px;
+        text-align: center;
+      }
+
+      .countdown-label {
+        font-size: 0.9rem;
+        font-weight: 400;
+        display: block;
+        margin-top: 5px;
+      }
+
+      .email-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 500px;
+        gap: 15px;
+        margin-top: 10px;
+      }
+
+      .email-input {
+        width: 100%;
+        padding: 12px 15px;
+        border-radius: 10px;
+        border: none;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        color: white;
+        font-size: 1rem;
+        outline: none;
+        transition: all 0.3s ease;
+      }
+
+      .email-input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .email-input:focus {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .subscribe-btn {
+        background: rgba(255, 255, 255, 0.3);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .subscribe-btn:hover {
+        background: rgba(255, 255, 255, 0.4);
+        transform: translateY(-2px);
+      }
+
+      .notification-text {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+
+      .success-message {
+        display: none;
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 8px;
+        background: rgba(46, 213, 115, 0.3);
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .launching-soon {
+          font-size: 1rem;
+        }
+        .countdown-box {
+          font-size: 1rem;
+          min-width: 60px;
+          padding: 10px;
+        }
+        .countdown-label {
+          font-size: 0.8rem;
+        }
+        .email-form {
+          width: 90%;
+        }
+      }

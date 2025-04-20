@@ -1,0 +1,24 @@
+.scratch-card-width {
+  width: 100%;
+}
+
+/* Width between 300px and 349px */
+@media (min-width: 300px) and (max-width: 349px) {
+  .scratch-card-width {
+    width: 320px;
+  }
+}
+
+/* Exact width: 344px */
+@media (width: 344px) {
+  .scratch-card-width {
+    width: 340px;
+  }
+}
+
+/* Width between 350px and 360px */
+@media (min-width: 350px) and (max-width: 360px) {
+  .scratch-card-width {
+    width: 360px;
+  }
+}

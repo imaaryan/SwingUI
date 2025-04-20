@@ -1,70 +1,117 @@
 .swing-scrolling-image {
-    visibility: hidden;
-    /* overflow: hidden; */
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-    width: 60vw;
-    position: relative;
+  visibility: hidden;
+  /* overflow: hidden; */
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  width: 60vw;
+  position: relative;
+}
 
+.swing-scrolling-image.showing {
+  visibility: visible;
+  opacity: 1;
+}
+
+.swing-scrolling-image .slider-container {
+  animation: sliding calc(var(--est-speed, 10) * 1s * 50 / var(--speed)) linear
+    infinite;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.swing-slider-wrapper-dark {
+  position: relative;
+  overflow: hidden;
+}
+
+.swing-slider-wrapper-dark::before,
+.swing-slider-wrapper-dark::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.swing-slider-wrapper-dark::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(9, 21, 28, 1) 10%,
+    rgba(9, 21, 28, 0) 100%
+  );
+}
+
+.swing-slider-wrapper-dark::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(9, 21, 28, 1) 10%,
+    rgba(9, 21, 28, 0) 100%
+  );
+}
+
+.swing-slider-wrapper-light {
+  position: relative;
+  overflow: hidden;
+}
+
+.swing-slider-wrapper-light::before,
+.swing-slider-wrapper-light::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.swing-slider-wrapper-light::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.swing-slider-wrapper-light::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.swing-slider-item {
+  transform: translateZ(0);
+  transition: transform 0.3s ease-in-out;
+  flex-shrink: 0;
+  width: 350px;
+  height: 180px;
+  margin: 0 2px;
+  object-fit: contain;
+}
+
+@keyframes sliding {
+  0% {
+    transform: translateX(0);
   }
-
-  .swing-scrolling-image.showing {
-    visibility: visible;
-    opacity: 1;
+  100% {
+    transform: translateX(
+      calc(-1 * var(--direction, 1) * 100% / var(--total, 2))
+    );
   }
+}
 
-  .swing-scrolling-image .slider-container {
-    animation: sliding calc(var(--est-speed, 10) * 1s * 50 / var(--speed)) linear infinite;
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  .swing-slider-wrapper {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .swing-slider-wrapper::before,
-  .swing-slider-wrapper::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 100px;
-    z-index: 2;
-    pointer-events: none;
-  }
-
-  .swing-slider-wrapper::before {
-    left: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
-  }
-
-  .swing-slider-wrapper::after {
-    right: 0;
-    background: linear-gradient(to left, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
-  }
-
-  .swing-slider-item {
-    transform: translateZ(0);
-    transition: transform 0.3s ease-in-out;
-    flex-shrink: 0;
-    width: 350px;
-    height: 180px;
-    margin: 0 2px;
-    object-fit: contain;
-  }
-
-
-  @keyframes sliding {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-1 * var(--direction, 1) * 100% / var(--total, 2))); }
-  }
-
-  .line-clamp-3 {
-display: -webkit-box;
--webkit-box-orient: vertical;
-overflow: hidden;
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .button-container {
   display: flex;

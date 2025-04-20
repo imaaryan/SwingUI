@@ -25,7 +25,6 @@ const CopyButton = ({ textToCopy, className = '' }) => {
         </>
       ) : (
         <>
-          <span style={{ fontFamily: 'var(--font-poppins)' }}>Copy</span>
           <i className='ri-file-copy-line text-sm'></i>
         </>
       )}

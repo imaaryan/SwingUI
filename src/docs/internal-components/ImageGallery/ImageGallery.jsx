@@ -3,6 +3,12 @@ import PreviewCodeBtn from '../../../components/PreviewCodeBtn.jsx';
 import { useTheme } from '../../../context/ThemeContext.jsx';
 import CodeBlock from '../../components/CodeBlock/CodeBlock.jsx';
 
+import Table from '../../components/TableComponent/Table.jsx'; // Import Table component
+
+import BottomFooter from '../../../components/BottomFooter.jsx';
+
+import './responsive.css';
+
 import img1 from '../../../assets/Images-For-Gallery/img1.webp';
 import img2 from '../../../assets/Images-For-Gallery/img2.webp';
 import img3 from '../../../assets/Images-For-Gallery/img3.webp';
@@ -18,7 +24,6 @@ function ImageGallery() {
 
   const htmlCssCode = `<div class=" bg-black">
       <div class="space-y-8 w-full pt-8 pb-8">
-        <!-- First Slider -->
           <div class="swing-scrolling-image"
             style="
             --direction: 1;
@@ -58,8 +63,7 @@ function ImageGallery() {
 
             </div>
           </div>
-  
-        <!-- Second Slider -->
+
           <div class="swing-scrolling-image"
             style="
             --direction: -1; 
@@ -96,14 +100,77 @@ function ImageGallery() {
             class="w-full h-full object-cover rounded-sm"
           />
          </div>
-
-            </div>
-          </div>
-  
-       
       </div>
     </div> 
   `;
+
+  // Define properties data for the table
+  const propertiesData = [
+    {
+      propertyName: 'scrolling wrapper class',
+      defaultValue: 'swing-scrolling-image',
+      description:
+        'Custom class controlling scrolling animation using CSS variables.',
+    },
+    {
+      propertyName: 'scroll direction',
+      defaultValue: '--direction: 1 or --direction: -1',
+      description:
+        'Controls the direction of the scroll: 1 for left-to-right, -1 for right-to-left.',
+    },
+    {
+      propertyName: 'scroll speed',
+      defaultValue: '--speed: 10',
+      description:
+        'Defines the speed of the scroll animation. Higher values mean faster scrolling.',
+    },
+    {
+      propertyName: 'pause on hover',
+      defaultValue: '--pause-on-hover: false',
+      description: 'Disables pause-on-hover functionality.',
+    },
+    {
+      propertyName: 'scroll animation container',
+      defaultValue: 'slider-container w-full flex animate-scroll gap-4 px-4',
+      description:
+        'Sets up a horizontal flex container with spacing and horizontal padding, and applies scroll animation.',
+    },
+    {
+      propertyName: 'slider item class',
+      defaultValue: 'swing-slider-item',
+      description:
+        'Wrapper for each image, possibly used for future styling or animation targeting.',
+    },
+  ];
+
+  // Define table columns configuration
+  const propertiesColumns = [
+    {
+      key: 'propertyName',
+      title: 'Property Name',
+      width: 'w-1/5',
+    },
+    {
+      key: 'defaultValue',
+      title: 'Value',
+      width: 'w-1/3',
+      render: (value) => (
+        <code
+          className={`px-2 py-1 rounded-lg text-sm ${
+            darkMode ? 'bg-gray-700' : 'bg-gray-200'
+          } inline-block min-w-full break-words`}
+        >
+          {value}
+        </code>
+      ),
+    },
+    {
+      key: 'description',
+      title: 'Description',
+      width: 'w-1/2',
+    },
+  ];
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       let prevWidth = window.innerWidth;
@@ -213,129 +280,72 @@ function ImageGallery() {
     }, 100);
 
     return () => clearTimeout(timeoutId);
-  }, [showCode, darkMode]);
-  const propertiesData = [
-    {
-      property: '--direction',
-      description:
-        'Controls the direction of the scrolling effect. A value of 1 moves the images to the right, while -1 moves them to the left.',
-      defaultValue: '1',
-      acceptedValues: '1 (right), -1 (left)',
-    },
-    {
-      property: '--speed',
-      description:
-        'Defines the speed of the scrolling animation. A higher value results in faster scrolling.',
-      defaultValue: '20',
-      acceptedValues: 'Number (higher values = faster)',
-    },
-    {
-      property: '----image-aspect-ratio',
-      description:
-        'If true, the aspect ratio of the images is fixed. If false, the images are stretched to fit their container.',
-      defaultValue: 'false',
-      acceptedValues: 'true.false',
-    },
-  ];
+  });
 
   return (
-    <div className='[@media(min-width:300px)]:w-[350px] [@media(min-width:400px)]:w-[385px] [@media(min-width:500px)]:w-full [@media(width:768px)]:w-[470px] [@media(width:820px)]:w-[500px] w-full max-w-5xl mx-auto py-8 px-4 sm:py-12'>
-      <h2 className='text-3xl sm:text-4xl font-bold mb-2'>Image Gallery </h2>
-      <p className='mb-10 sm:mb-16'>
-        The ImageGallery component implements a responsive, infinite-scroll
-        image gallery with smooth animations using the swing scrolling effect.
-        It offers a dynamic image display with customizable speed and seamless
-        scrolling.
-      </p>
+    <div>
+    <div
+      className={`w-full min-h-[100dvh] transition-colors duration-300 ${
+        darkMode
+          ? 'bg-[var(--dark-bg)] text-[var(--color-text-dark)]'
+          : 'bg-[var(--light-bg)] text-[var(--color-text)]'
+      } px-0 py-6`}
+    >
+      <div className='max-w-5xl mx-auto px-2 sm:px-6 lg:px-8 py-8 sm:py-6'>
+        <h2 className='text-3xl mb-3 sm:mb-8 sm:text-4xl font-bold pb-4'>
+          Image Gallery
+        </h2>
+        <h2 className='text-xl sm:text-2xl font-semibold mb-2'>
+          Swing Flow Infinite Scroller
+        </h2>
+        <p className='mb-6 sm:mb-8 md:mb-10 lg:mb-12'>
+          SwingUI's auto-scrolling gallery delivers dynamic visual storytelling
+          with dual-directional motion, creating an eye-catching yet
+          distraction-free presentation.
+        </p>
 
-      <PreviewCodeBtn showCode={showCode} setShowCode={setShowCode} />
+        <PreviewCodeBtn showCode={showCode} setShowCode={setShowCode} />
 
-      {!showCode && (
-        <div
-          key={`${darkMode}-${showCode}`}
-          className={`flex justify-center items-center rounded-lg shadow-md overflow-hidden ${
-            darkMode
-              ? 'bg-[var(--light-bg)] text-[var(--color-text)]'
-              : 'bg-[var(--light-bg)] text-[var(--color-text)]'
-          }  bg-gray-200 dark:from-gray-800 dark:to-gray-700`}
-        >
+        {!showCode && (
           <div
-            className='w-full'
-            dangerouslySetInnerHTML={{
-              __html: htmlCssCode,
-            }}
-          />
-        </div>
-      )}
+            key={`${darkMode}-${showCode}`}
+            className={`flex justify-center items-center rounded-lg shadow-md overflow-hidden ${
+              darkMode
+                ? 'bg-[var(--light-bg)] text-[var(--color-text)]'
+                : 'bg-[var(--light-bg)] text-[var(--color-text)]'
+            }  bg-gray-200 dark:from-gray-800 dark:to-gray-700`}
+          >
+            <div
+              className='w-full'
+              dangerouslySetInnerHTML={{
+                __html: htmlCssCode,
+              }}
+            />
+          </div>
+        )}
 
-      {showCode && (
-        <div className='w-full overflow-x-auto rounded-xl'>
-          <CodeBlock language='html' code={htmlCssCode} />
-        </div>
-      )}
+        {showCode && (
+          <div className='w-full my-4 rounded-xl relative whitespace-pre overflow-x-auto md:whitespace-pre-wrap md:break-words md:overflow-x-visible'>
+            <CodeBlock language='html' code={htmlCssCode} />
+          </div>
+        )}
 
-      <hr
-        className={`my-10 border-t ${
-          darkMode ? 'border-gray-700 opacity-30' : 'border-gray-300 opacity-50'
-        }`}
-      />
-
-      <h2 className='text-2xl sm:text-3xl font-bold mt-10 mb-6'>
-        Transition and Animation Settings
-      </h2>
-      <div className='w-full mb-12 overflow-x-auto'>
-        <table
-          className={`w-full border-collapse rounded-lg overflow-hidden ${
-            darkMode ? 'bg-gray-800' : 'bg-gray-50'
+        <hr
+          className={`my-10 border-t ${
+            darkMode
+              ? 'border-gray-700 opacity-30'
+              : 'border-gray-300 opacity-50'
           }`}
-        >
-          <thead>
-            <tr className={`${darkMode ? 'bg-gray-700' : 'bg-gray-100'}`}>
-              <th className='py-3 px-4 text-left font-semibold'>Property</th>
-              <th className='py-3 px-4 text-left font-semibold'>Description</th>
+        />
 
-              <th className='py-3 px-4 text-left font-semibold'>
-                Default Value
-              </th>
-              <th className='py-3 px-4 text-left font-semibold'>
-                Accepted Value
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {propertiesData.map((item, index) => (
-              <tr
-                key={index}
-                className={`border-t ${
-                  darkMode ? 'border-gray-700' : 'border-gray-200'
-                }`}
-              >
-                <td className='py-3 px-4'>
-                  <code
-                    className={`px-2 py-1 rounded text-sm ${
-                      darkMode ? 'bg-gray-700' : 'bg-gray-200'
-                    }`}
-                  >
-                    {item.property}
-                  </code>
-                </td>
-                <td className='py-3 px-4'>{item.description}</td>
-
-                <td className='py-3 px-4'>
-                  <code
-                    className={`px-2 py-1 rounded text-sm ${
-                      darkMode ? 'bg-gray-700' : 'bg-gray-200'
-                    }`}
-                  >
-                    {item.defaultValue}
-                  </code>
-                </td>
-                <td className='py-3 px-4'>{item.acceptedValues}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <h2 className='text-xl sm:text-2xl font-semibold mb-4'>Properties</h2>
+        <div className='mb-12'>
+          <Table data={propertiesData} columns={propertiesColumns} />
+        </div>
       </div>
+
+    </div>
+    <BottomFooter/>
     </div>
   );
 }

@@ -1,0 +1,148 @@
+/* responsiveWidths.css */
+.responsive-width {
+  width: 100%; /* default */
+}
+
+@media (min-width: 300px) {
+  .responsive-width {
+    width: 320px;
+  }
+}
+
+@media (width: 344px) {
+  .responsive-width {
+    width: 350px;
+  }
+}
+
+@media (min-width: 360px) {
+  .responsive-width {
+    width: 375px;
+  }
+}
+
+@media (width: 360px) {
+  .responsive-width {
+    width: 360px;
+  }
+}
+
+@media (min-width: 390px) {
+  .responsive-width {
+    width: 400px;
+  }
+}
+
+@media (min-width: 400px) {
+  .responsive-width {
+    width: 415px;
+  }
+}
+
+@media (min-width: 430px) {
+  .responsive-width {
+    width: 430px;
+  }
+}
+
+@media (min-width: 500px) {
+  .responsive-width {
+    width: 100%;
+  }
+}
+
+@media (width: 768px) {
+  .responsive-width {
+    width: 470px;
+  }
+}
+
+@media (width: 820px) {
+  .responsive-width {
+    width: 500px;
+  }
+}
+
+/* responsiveWidths.css */
+.responsive-width {
+  width: 100%; /* default */
+}
+
+@media (max-width: 768px) {
+  .swing-slider-item {
+    width: 65vw !important;
+    min-width: 320px;
+    height: 150px!important;
+    margin: 0 4px;
+  }
+
+  .slider-container {
+    gap: 0.25rem !important;
+    animation-duration: calc(var(--est-speed, 10) * 1s * 30 / var(--speed)) !important;
+  }
+
+  .responsive-width {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@media (min-width: 300px) {
+  .responsive-width {
+    width: 320px;
+  }
+}
+
+@media (width: 344px) {
+  .responsive-width {
+    width: 350px;
+  }
+}
+
+@media (min-width: 360px) {
+  .responsive-width {
+    width: 375px;
+  }
+}
+
+@media (width: 360px) {
+  .responsive-width {
+    width: 360px;
+  }
+}
+
+@media (min-width: 390px) {
+  .responsive-width {
+    width: 400px;
+  }
+}
+
+@media (min-width: 400px) {
+  .responsive-width {
+    width: 415px;
+  }
+}
+
+@media (min-width: 430px) {
+  .responsive-width {
+    width: 430px;
+  }
+}
+
+@media (min-width: 500px) {
+  .responsive-width {
+    width: 100%;
+  }
+}
+
+@media (width: 768px) {
+  .responsive-width {
+    width: 100%;
+  }
+}
+
+@media (width: 820px) {
+  .responsive-width {
+    width: 500px;
+  }
+}

@@ -46,12 +46,12 @@
 }
 
 .scrollbar-hidden {
-  scrollbar-width: none; 
-  -ms-overflow-style: none; 
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
-  display: none; 
+  display: none;
 }
 
 pre[class*='language-'] {
@@ -62,3 +62,120 @@ code[class*='language-'] {
   white-space: pre-wrap !important;
   word-break: break-word;
 }
+
+.scrollbar-custom {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Light Mode Scrollbar */
+:root {
+  --scrollbar-thumb: #e5e7eb; /* gray-200 */
+  --scrollbar-thumb-hover: #d1d5db; /* gray-300 */
+}
+
+/* Dark Mode Scrollbar */
+.dark {
+  --scrollbar-thumb: #1f2937; /* gray-800 */
+  --scrollbar-thumb-hover: #374151; /* gray-700 */
+}
+
+/* Firefox Support */
+@supports (scrollbar-color: auto) {
+  * {
+    scrollbar-color: var(--scrollbar-thumb) transparent;
+    scrollbar-width: thin;
+  }
+}
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right linear infinite;
+}
+
+
+.pulse {
+  background-color: lightblue;
+  height: 7vmax;
+  width: 7vmax;
+  opacity: 0.5;
+  border-radius: 100%;
+  position: absolute;
+}
+.ring {
+  position: absolute;
+  background-color: inherit;
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
+  opacity: 0.5;
+  animation: pulsing 2s ease-out infinite;
+
+  &:nth-of-type(1) {
+    animation-delay: -0.5s;
+  }
+  &:nth-of-type(2) {
+    animation-delay: -1s;
+  }
+  &:nth-of-type(3) {
+    animation-delay: -1.5s;
+  }
+}
+
+@keyframes pulsing {
+  100% {
+    transform: scale(1.75);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .pulse {
+    height: 15vmax;
+    width: 15vmax;
+  }
+}
+
+
+
+
+
+

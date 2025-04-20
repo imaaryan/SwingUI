@@ -17,6 +17,7 @@ export default function FeaturesSection() {
   const [touchStartY, setTouchStartY] = useState(0);
   const [currentScrollY, setCurrentScrollY] = useState(0);
   const [sliderItems, setSliderItems] = useState([]);
+  const [showVideoModal, setShowVideoModal] = useState(false);
   const { darkMode, toggleTheme } = useTheme();
 
   const [isUserInteracting, setIsUserInteracting] = useState(false);
@@ -199,68 +200,68 @@ export default function FeaturesSection() {
     }
   };
 
-  useEffect(() => {
-    const handleGlobalWheel = (e) => {
-      if (!scrollContainerRef.current) return;
-      const rect = scrollContainerRef.current.getBoundingClientRect();
-      const withinSlider =
-        e.clientY >= rect.top &&
-        e.clientY <= rect.bottom &&
-        e.clientX >= rect.left &&
-        e.clientX <= rect.right;
-      const canScrollDown = currentScrollY > getMaxScroll();
-      const canScrollUp = currentScrollY < 0;
-      if (withinSlider && (canScrollUp || canScrollDown)) {
-        handleWheel(e);
-      }
-    };
+  // useEffect(() => {
+  //   const handleGlobalWheel = (e) => {
+  //     if (!scrollContainerRef.current) return;
+  //     const rect = scrollContainerRef.current.getBoundingClientRect();
+  //     const withinSlider =
+  //       e.clientY >= rect.top &&
+  //       e.clientY <= rect.bottom &&
+  //       e.clientX >= rect.left &&
+  //       e.clientX <= rect.right;
+  //     const canScrollDown = currentScrollY > getMaxScroll();
+  //     const canScrollUp = currentScrollY < 0;
+  //     if (withinSlider && (canScrollUp || canScrollDown)) {
+  //       handleWheel(e);
+  //     }
+  //   };
 
-    const handleGlobalTouchMove = (e) => {
-      if (!scrollContainerRef.current) return;
-      const rect = scrollContainerRef.current.getBoundingClientRect();
-      const touch = e.touches[0];
-      if (!touch) return;
-      const withinSlider =
-        touch.clientY >= rect.top &&
-        touch.clientY <= rect.bottom &&
-        touch.clientX >= rect.left &&
-        touch.clientX <= rect.right;
-      const canScrollDown = currentScrollY > getMaxScroll();
-      const canScrollUp = currentScrollY < 0;
-      if (withinSlider && (canScrollUp || canScrollDown)) {
-        e.preventDefault();
-        handleTouchMove(e);
-      }
-    };
+  //   const handleGlobalTouchMove = (e) => {
+  //     if (!scrollContainerRef.current) return;
+  //     const rect = scrollContainerRef.current.getBoundingClientRect();
+  //     const touch = e.touches[0];
+  //     if (!touch) return;
+  //     const withinSlider =
+  //       touch.clientY >= rect.top &&
+  //       touch.clientY <= rect.bottom &&
+  //       touch.clientX >= rect.left &&
+  //       touch.clientX <= rect.right;
+  //     const canScrollDown = currentScrollY > getMaxScroll();
+  //     const canScrollUp = currentScrollY < 0;
+  //     if (withinSlider && (canScrollUp || canScrollDown)) {
+  //       e.preventDefault();
+  //       handleTouchMove(e);
+  //     }
+  //   };
 
-    window.addEventListener('wheel', handleGlobalWheel, { passive: false });
-    window.addEventListener('touchmove', handleGlobalTouchMove, {
-      passive: false,
-    });
+  //   window.addEventListener('wheel', handleGlobalWheel, { passive: false });
+  //   window.addEventListener('touchmove', handleGlobalTouchMove, {
+  //     passive: false,
+  //   });
 
-    const handleGlobalTouchStart = (e) => {
-      if (!scrollContainerRef.current) return;
-      const rect = scrollContainerRef.current.getBoundingClientRect();
-      const touch = e.touches[0];
-      if (!touch) return;
-      const withinSlider =
-        touch.clientY >= rect.top &&
-        touch.clientY <= rect.bottom &&
-        touch.clientX >= rect.left &&
-        touch.clientX <= rect.right;
-      if (withinSlider) {
-        handleTouchStart(e);
-      }
-    };
+  //   const handleGlobalTouchStart = (e) => {
+  //     if (!scrollContainerRef.current) return;
+  //     const rect = scrollContainerRef.current.getBoundingClientRect();
+  //     const touch = e.touches[0];
+  //     if (!touch) return;
+  //     const withinSlider =
+  //       touch.clientY >= rect.top &&
+  //       touch.clientY <= rect.bottom &&
+  //       touch.clientX >= rect.left &&
+  //       touch.clientX <= rect.right;
+  //     if (withinSlider) {
+  //       handleTouchStart(e);
+  //     }
+  //   };
 
-    window.addEventListener('touchstart', handleGlobalTouchStart);
+  //   window.addEventListener('touchstart', handleGlobalTouchStart);
 
-    return () => {
-      window.removeEventListener('wheel', handleGlobalWheel);
-      window.removeEventListener('touchmove', handleGlobalTouchMove);
-      window.removeEventListener('touchstart', handleGlobalTouchStart);
-    };
-  }, [handleWheel, currentScrollY]);
+  //   return () => {
+  //     window.removeEventListener('wheel', handleGlobalWheel);
+  //     window.removeEventListener('touchmove', handleGlobalTouchMove);
+  //     window.removeEventListener('touchstart', handleGlobalTouchStart);
+  //   };
+  // }, [handleWheel, currentScrollY]);
 
   useEffect(() => {
     if (sliderItems.length === 0 || isUserInteracting) return;
@@ -357,7 +358,7 @@ export default function FeaturesSection() {
 
           <div className='relative w-full lg:w-1/2'>
             <div
-              className='relative w-full h-80 md:h-[30rem] overflow-hidden rounded-3xl shadow-xl flex items-center justify-center swing-ocean-gradient'
+              className='relative w-full h-80 md:h-[33rem] overflow-hidden rounded-3xl shadow-xl flex items-center justify-center swing-ocean-gradient'
               ref={scrollContainerRef}
             >
               <div
@@ -368,7 +369,7 @@ export default function FeaturesSection() {
                 {[img1, img2, img3].map((img, i) => (
                   <div
                     key={i}
-                    className='slider-item w-full h-80 md:h-[30rem] transition-all duration-500'
+                    className='slider-item w-full h-90 md:h-[33rem] transition-all duration-500'
                   >
                     <div className='w-full h-full flex items-center justify-center'>
                       <img
@@ -380,10 +381,39 @@ export default function FeaturesSection() {
                   </div>
                 ))}
               </div>
+              <i
+                className='absolute z-20 ri-play-fill text-4xl md:text-4xl text-white opacity-100'
+                onClick={() => setShowVideoModal(true)}
+              ></i>
+              <div className='pulse z-10 w-full h-full flex items-center justify-center'>
+                <div className='ring'></div>
+                <div className='ring'></div>
+                <div className='ring'></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {showVideoModal && (
+        <div className='fixed inset-0 bg-black/80 flex items-center justify-center z-50'>
+          <div className='relative p-4'>
+            <button
+              onClick={() => setShowVideoModal(false)}
+              className='absolute -top-2 -right-2 text-white text-3xl bg-black/80 rounded-full pl-1 pr-1 hover:bg-black'
+            >
+              &times;
+            </button>
+            <iframe
+              className='w-[85vw] h-[50vw] md:w-[90vw] md:h-[50vw] max-w-[800px] max-h-[450px] rounded-lg shadow-lg'
+              src='https://www.youtube.com/embed/O_AguXt0VNM?si=v1OZ4CUnSNze-zzr'
+              title='YouTube video of how to use swingkit?'
+              allow='encrypted-media'
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }

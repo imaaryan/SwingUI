@@ -1,0 +1,15 @@
+.word-transition {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .word-enter {
+    opacity: 0;
+    transform: translateY(50%) rotateX(-90deg);
+  }
+  .word-active {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+  .word-exit {
+    opacity: 0;
+    transform: translateY(-50%) rotateX(90deg);
+  }

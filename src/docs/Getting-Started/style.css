@@ -10,3 +10,36 @@
     overflow-x: hidden !important;
   }
 }
+@media (min-width: 400px) and (max-width: 868px) {
+  pre,
+  code {
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+    overflow-wrap: break-word !important;
+    font-size: 0.95rem !important;
+  }
+
+  .codeblock-wrapper {
+    overflow-x: hidden !important;
+    margin-left: -0.5rem !important;
+    margin-right: -0.5rem !important;
+    width: calc(100% + 1rem) !important;
+  }
+  
+  h1 {
+    font-size: 1.75rem !important;
+  }
+  
+  h2 {
+    font-size: 1.35rem !important;
+  }
+  
+  p {
+    font-size: 0.95rem !important;
+  }
+  
+  .max-w-5xl {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}

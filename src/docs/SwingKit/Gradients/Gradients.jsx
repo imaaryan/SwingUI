@@ -4,6 +4,7 @@ import HoverAndCopyBlock from '../../components/HoverAndCopyBlock/hoverAndCopyBl
 import { useTheme } from '../../../context/ThemeContext.jsx';
 import './style.css';
 import '../TextGradients/style.css';
+import BottomFooter from '../../../components/BottomFooter.jsx';
 
 
 const gradients = [
@@ -86,8 +87,9 @@ const GradientGrid = () => {
   ];
 
   return (
+    <div>
     <main
-      className={`w-full transition-colors duration-300 ${
+      className={`w-full min-h-[100dvh] transition-colors duration-300 ${
         darkMode
           ? 'bg-[var(--dark-bg)] text-[var(--color-text-dark)]'
           : 'bg-[var(--light-bg)] text-[var(--color-text)]'
@@ -112,6 +114,15 @@ const GradientGrid = () => {
             </div>
 
           
+            <hr
+              className={`my-10 border-t ${
+                darkMode
+                  ? 'border-gray-700 opacity-30'
+                  : 'border-gray-300 opacity-50'
+                  }`}
+            />
+            
+            
             <h2 className='text-xl sm:text-2xl font-semibold mb-4'>
               Properties
             </h2>
@@ -122,7 +133,7 @@ const GradientGrid = () => {
                 }`}
               >
                 <thead>
-                  <tr className={`${darkMode ? 'bg-gray-700' : 'bg-gray-100'}`}>
+                  <tr className={`${darkMode ? 'bg-gray-700' : 'bg-gray-200'}`}>
                     <th className='py-3 px-4 text-left font-semibold'>
                       Class Name
                     </th>
@@ -174,7 +185,7 @@ const GradientGrid = () => {
                 }`}
               >
                 <thead>
-                  <tr className={`${darkMode ? 'bg-gray-700' : 'bg-gray-100'}`}>
+                  <tr className={`${darkMode ? 'bg-gray-700' : 'bg-gray-200'}`}>
                     <th className='py-3 px-4 text-left font-semibold'>
                       Class Name
                     </th>
@@ -215,17 +226,13 @@ const GradientGrid = () => {
               </table>
             </div>
 
-            <hr
-              className={`my-10 border-t ${
-                darkMode
-                  ? 'border-gray-700 opacity-30'
-                  : 'border-gray-300 opacity-50'
-              }`}
-            />
           </div>
         </div>
       </div>
+
     </main>
+    <BottomFooter/>
+    </div>
   );
 };
 
