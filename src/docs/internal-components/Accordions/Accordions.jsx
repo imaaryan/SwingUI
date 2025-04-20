@@ -277,12 +277,13 @@ const AccordionDemo = () => {
   };
 
   return (
+    <div>
     <div
       className={`[@media(min-width:300px)_and_(max-width:350px)]:w-[325px] w-full py-6 transition-colors duration-300 ${
         darkMode
           ? 'bg-[var(--dark-bg)] text-[var(--color-text-dark)]'
           : 'bg-[var(--light-bg)] text-[var(--color-text)]'
-      } px-4`}
+      } px-4 min-h-[100dvh]`}
     >
       <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-6'>
         <h2 className='text-3xl mb-3 sm:mb-8 sm:text-4xl font-bold pb-4'>Accordion</h2>
@@ -393,7 +394,9 @@ const AccordionDemo = () => {
           </div>
         )}
       </div>
-      <BottomFooter />
+
+    </div>
+    <BottomFooter />
     </div>
   );
 };

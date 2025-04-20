@@ -110,8 +110,9 @@ const BentoGrid = () => {
 `;
 
   return (
+    <div>
     <div
-      className={`w-full sm:px-2 transition-colors duration-300 ${
+      className={`w-full min-h-[100dvh] sm:px-2 transition-colors duration-300 ${
         darkMode
           ? 'bg-[var(--dark-bg)] text-[var(--color-text-dark)]'
           : 'bg-[var(--light-bg)] text-[var(--color-text)]'
@@ -143,7 +144,8 @@ const BentoGrid = () => {
           </div>
         )}
       </div>
- <BottomFooter/>
+    </div>
+    <BottomFooter/>
     </div>
   );
 };

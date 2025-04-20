@@ -156,7 +156,7 @@ function ImageGallery() {
       width: 'w-1/3',
       render: (value) => (
         <code
-          className={`px-2 py-1 rounded text-sm ${
+          className={`px-2 py-1 rounded-lg text-sm ${
             darkMode ? 'bg-gray-700' : 'bg-gray-200'
           } inline-block min-w-full break-words`}
         >
@@ -283,8 +283,9 @@ function ImageGallery() {
   });
 
   return (
+    <div>
     <div
-      className={`w-full transition-colors duration-300 ${
+      className={`w-full min-h-[100dvh] transition-colors duration-300 ${
         darkMode
           ? 'bg-[var(--dark-bg)] text-[var(--color-text-dark)]'
           : 'bg-[var(--light-bg)] text-[var(--color-text)]'
@@ -342,7 +343,9 @@ function ImageGallery() {
           <Table data={propertiesData} columns={propertiesColumns} />
         </div>
       </div>
- <BottomFooter/>
+
+    </div>
+    <BottomFooter/>
     </div>
   );
 }

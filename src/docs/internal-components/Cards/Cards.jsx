@@ -225,60 +225,6 @@ const Cards = () => {
         </a>
       </div>
     </div>
-
-    <div class="group relative h-auto min-h-72 w-full lg:w-[48%] mb-6 lg:mr-[2%] transition-all duration-300 " style="max-width: 300px;">
-      <div class="overflow-hidden rounded-3xl">
-        <a
-          href="#!"
-          class="course-bg-hover block p-8 bg-zinc-900 overflow-hidden relative"
-        >
-          <div
-            class="course-bg h-32 w-32 bg-pink-600 absolute -top-20 -right-20 rounded-full transition-all duration-500"
-          ></div>
-          <div
-            class="min-h-[87px] font-bold text-2xl text-white relative z-10"
-          >
-            Modern JavaScript Frameworks
-          </div>
-          <div class="card-text text-zinc-400 text-base mb-7 relative z-10">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </div>
-          <div class="relative z-10">
-            <span class="know-more text-pink-600 inline-block"
-              >Know more</span
-            >
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="group relative h-auto min-h-72 w-full lg:w-[48%] mb-6 lg:mr-[2%] transition-all duration-300 " style="max-width: 300px;">
-      <div class="overflow-hidden rounded-3xl">
-        <a
-          href="#!"
-          class="course-bg-hover block p-8 bg-zinc-900 overflow-hidden relative"
-        >
-          <div
-            class="course-bg h-32 w-32 bg-indigo-600 absolute -top-20 -right-20 rounded-full transition-all duration-500"
-          ></div>
-          <div
-            class="min-h-[87px] font-bold text-2xl text-white relative z-10"
-          >
-            Front-end development
-          </div>
-          <div class="card-text text-zinc-400 text-base mb-7 relative z-10">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </div>
-          <div class="relative z-10">
-            <span class="know-more text-indigo-600 inline-block"
-              >Know more</span
-            >
-          </div>
-        </a>
-      </div>
-    </div>
   </div>
 </div>`;
 
@@ -412,8 +358,9 @@ const Cards = () => {
   };
 
   return (
+    <div>
     <div
-      className={`w-full transition-colors duration-300 ${
+      className={`w-full min-h-[100dvh] transition-colors duration-300 ${
         darkMode
           ? 'bg-[var(--dark-bg)] text-[var(--color-text-dark)]'
           : 'bg-[var(--light-bg)] text-[var(--color-text)]'
@@ -452,7 +399,8 @@ const Cards = () => {
           <Table data={propertiesData} columns={propertiesColumns} />
         </div> */}
       </div>
- <BottomFooter/>
+    </div>
+    <BottomFooter/>
     </div>
   );
 };

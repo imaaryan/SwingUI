@@ -197,9 +197,10 @@ function Scratchcard() {
     }, []); // Empty dependency array - run only once on mount
 
     return (
+
       <div
         ref={cardRef}
-        className='relative w-64 h-64 rounded-2xl overflow-hidden shadow-xl transition-transform swing-ocean-gradient'
+        className='relative  w-64 h-64 rounded-2xl overflow-hidden shadow-xl transition-transform swing-ocean-gradient'
       >
         <div className='absolute inset-0 z-0 flex items-center justify-center swing-ocean-gradient'>
           <div className='text-8xl'>
@@ -234,7 +235,8 @@ function Scratchcard() {
   };
 
   return (
-    <div className='max-w-5xl mx-auto responsive-width px-4 sm:px-6 lg:px-8 py-8 sm:py-12'>
+    <div>
+    <div className='max-w-5xl min-h-[100dvh]  mx-auto responsive-width px-4 sm:px-6 lg:px-8 py-8 sm:py-12'>
       <h1 className='text-3xl sm:text-4xl font-bold pb-4 mb-3 sm:mb-8'>Scratch Card </h1>
       <h3 className='text-xl sm:text-2xl font-semibold mb-2'>Swing Scratch Card</h3>
       <p className='mb-10 sm:mb-16'>
@@ -265,6 +267,7 @@ function Scratchcard() {
         </div>
       )}
 
+    </div> 
 <BottomFooter/>
     </div>
     

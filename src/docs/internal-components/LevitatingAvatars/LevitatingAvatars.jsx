@@ -178,8 +178,9 @@ function LevitatingAvatars() {
 </div>`;
 
   return (
+    <div>
     <div
-      className={`w-full transition-colors duration-300 ${
+      className={`w-full min-h-[100dvh] transition-colors duration-300 ${
         darkMode
           ? 'bg-[var(--dark-bg)] text-[var(--color-text-dark)]'
           : 'bg-[var(--light-bg)] text-[var(--color-text)]'
@@ -187,7 +188,7 @@ function LevitatingAvatars() {
     >
       <div className='max-w-5xl mx-auto px-2 sm:px-6 lg:px-8 py-8 sm:py-6'>
         <h2 className='text-3xl mb-3 sm:mb-8 sm:text-4xl font-bold pb-4'>
-          Levitating Avatars
+         Avatar
         </h2>
         <h2 className='text-xl sm:text-2xl font-semibold mb-2'>
           Swing Orbit Display
@@ -229,6 +230,8 @@ function LevitatingAvatars() {
           <Table data={propertiesData} columns={propertiesColumns} />
         </div> */}
       </div>
+    </div>
+    
  <BottomFooter/>
     </div>
   );
