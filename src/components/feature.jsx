@@ -406,8 +406,8 @@ export default function FeaturesSection() {
             </button>
             <iframe
               className='w-[85vw] h-[50vw] md:w-[90vw] md:h-[50vw] max-w-[800px] max-h-[450px] rounded-lg shadow-lg'
-              src='https://www.youtube.com/embed/xHxs1RIe7j4'
-              title='YouTube video player'
+              src='https://www.youtube.com/embed/O_AguXt0VNM?si=v1OZ4CUnSNze-zzr'
+              title='YouTube video of how to use swingkit?'
               allow='encrypted-media'
               allowFullScreen
             />
