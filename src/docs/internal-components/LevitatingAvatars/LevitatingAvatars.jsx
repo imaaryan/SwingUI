@@ -157,13 +157,13 @@ function LevitatingAvatars() {
   const htmlCssCode = `
 <div class="bg-white flex justify-center items-center h-screen overflow-hidden">
   <div class="center relative w-1/4 h-1/4 max-w-xs max-h-xs md:w-1/3 md:h-1/3 lg:w-1/2 lg:h-1/2">
-    <div class="absolute rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-gray-300" data-scale="0.5" data-speed="0.6" data-direction="clockwise">
+    <div class="absolute rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-gray-300" data-scale="0.5" data-speed="0.2" data-direction="clockwise">
       <img src="${pic1}" class="absolute -translate-x-1/2 -translate-y-1/2 orbit-icon rounded-full border border-black" />
       <img src="${pic2}" class="absolute -translate-x-1/2 -translate-y-1/2 orbit-icon rounded-full border border-black" />
       <img src="${pic3}" class="absolute -translate-x-1/2 -translate-y-1/2 orbit-icon rounded-full border border-black" />
       <img src="${pic4}" class="absolute -translate-x-1/2 -translate-y-1/2 orbit-icon rounded-full border border-black" />
     </div>
-    <div class="absolute rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-gray-300" data-scale="0.83" data-speed="0.8" data-direction="anticlockwise">
+    <div class="absolute rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-gray-300" data-scale="0.83" data-speed="0.3" data-direction="anticlockwise">
       <img src="${pic5}" class="absolute -translate-x-1/2 -translate-y-1/2 orbit-icon rounded-full border border-black" />
       <img src="${pic6}" class="absolute -translate-x-1/2 -translate-y-1/2 orbit-icon rounded-full border border-black" />
       <img src="${pic7}" class="absolute -translate-x-1/2 -translate-y-1/2 orbit-icon rounded-full border border-black" />
@@ -188,7 +188,7 @@ function LevitatingAvatars() {
     >
       <div className='max-w-5xl mx-auto px-2 sm:px-6 lg:px-8 py-8 sm:py-6'>
         <h2 className='text-3xl mb-3 sm:mb-8 sm:text-4xl font-bold pb-4'>
-         Avatar
+         Levitating Avatar
         </h2>
         <h2 className='text-xl sm:text-2xl font-semibold mb-2'>
           Swing Orbit Display
